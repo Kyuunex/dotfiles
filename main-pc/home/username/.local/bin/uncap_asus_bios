@@ -1,0 +1,2 @@
+#!/bin/bash
+dd bs=2048 skip=1 if="$@" of="$@_UNCAPED.BIN"

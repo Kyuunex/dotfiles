@@ -1,0 +1,2 @@
+#!/bin/bash
+opusenc --bitrate 192 "$@" "$@.opus"

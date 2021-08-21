@@ -1,0 +1,2 @@
+#!/bin/sh
+echo "exec xinit \"$@\" -- :1 vt6" > /home/$HOME/.local/bin/vt6s

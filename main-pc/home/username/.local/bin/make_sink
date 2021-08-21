@@ -1,0 +1,3 @@
+#!/bin/bash
+pacmd load-module module-null-sink sink_name=CUSTOM_SINK
+pacmd update-sink-proplist CUSTOM_SINK device.description=CUSTOM_SINK

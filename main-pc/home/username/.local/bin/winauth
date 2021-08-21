@@ -1,0 +1,41 @@
+#!/bin/bash
+export INSTALL_LOCATION="$HOME/.local/share/WinAuth"
+
+mkdir -p "$HOME/.local/share/wineprefixes/"
+
+export WINEPREFIX="$HOME/.local/share/wineprefixes/winauth/"
+#export WINEARCH=win32 
+
+if [ ! -f "$HOME/.local/share/applications/winauth.desktop" ]
+then
+    mkdir -p "$HOME/.local/share/icons/"
+    mkdir -p "$HOME/.local/share/applications/"
+
+    wget -O "$HOME/.local/share/icons/winauth.png" "https://raw.githubusercontent.com/winauth/winauth/master/WinAuth/Resources/WinAuthIcon.png"
+    
+    echo "[Desktop Entry]
+          Type=Application
+          Name=WinAuth
+          Icon=winauth.png
+          Exec=winauth %U
+          Categories=Utility;Security;
+          StartupWMClass=WinAuth.exe" > "$HOME/.local/share/applications/winauth.desktop"
+fi
+
+if [ ! -d "$INSTALL_LOCATION" ]
+then
+    mkdir -p "$INSTALL_LOCATION"
+    cd "$INSTALL_LOCATION"
+    
+    wget -O "$INSTALL_LOCATION/WinAuth-3.5.1.zip" "https://github.com/winauth/winauth/releases/download/3.5.1/WinAuth-3.5.1.zip"
+    unzip "WinAuth-3.5.1.zip"
+    rm "WinAuth-3.5.1.zip"
+fi
+
+if [ ! -d "$WINEPREFIX" ]
+then
+    winetricks -q dotnet452
+fi
+
+cd "$INSTALL_LOCATION"
+wine "WinAuth.exe"

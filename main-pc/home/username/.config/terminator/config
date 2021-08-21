@@ -1,0 +1,22 @@
+[global_config]
+  title_transmit_bg_color = "#e5a50a"
+  inactive_color_offset = 1.0
+[keybindings]
+[profiles]
+  [[default]]
+    background_color = "#2d2a2e"
+    background_darkness = 0.95
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    foreground_color = "#ffd866"
+    scrollback_lines = 10000
+    palette = "#2e3436:#d74669:#33d17a:#c4a000:#3465a4:#dc8add:#06989a:#d3d7cf:#555753:#ff6188:#8ff0a4:#fce94f:#729fcf:#c061cb:#34e2e2:#eeeeec"
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]

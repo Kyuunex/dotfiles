@@ -1,0 +1,40 @@
+#!/bin/bash
+sudo modprobe v4l2loopback video_nr=7 'card_label=MXCAM'
+
+# variant 1
+export LD_PRELOAD=/usr/lib/libv4l/v4l1compat.so
+ffmpeg -input_format yuv420p -framerate 60 -video_size 1280x720 -i /dev/video2 -c:v copy -f v4l2 /dev/video7
+
+# variant 2
+# ffmpeg -input_format nv12 -framerate 30 -video_size 1280x720 -i /dev/video2 -vcodec rawvideo -pix_fmt yuv420p -threads 0 -f v4l2 /dev/video7
+
+# variant 3
+# export LD_PRELOAD=/usr/lib/libv4l/v4l1compat.so
+# ffmpeg -input_format h264 -framerate 30 -video_size 1280x720 -i /dev/video0 -c:v copy -f v4l2 /dev/video7
+
+
+# export LD_PRELOAD=/usr/lib/libv4l/v4l2convert.so
+# export LD_PRELOAD=/usr/lib/libv4l/v4l1compat.so
+
+# v4l2-ctl -d /dev/video2 -c brightness=-60
+
+# mpv --demuxer-lavf-o=video_size=1280x720,input_format=h264,framerate=30 av://v4l2:/dev/video0 --profile=low-latency
+
+
+# ffmpeg -f v4l2 -list_formats all -i /dev/video2
+
+# ffmpeg -input_format yuv420p -framerate 30 -video_size 1280x720 -i /dev/video2 -c:v copy -f v4l2 /dev/video7
+
+
+# ffmpeg -input_format h264 -framerate 30 -video_size 1280x720 -i /dev/video0 -c:v copy -f v4l2 /dev/video7
+# ffmpeg -input_format gray -framerate 30 -video_size 2688x1520 -i /dev/video2 -vcodec rawvideo -pix_fmt yuv420p -threads 0 -f v4l2 /dev/video7
+# ffmpeg -input_format h264 -framerate 30 -video_size 1280x720 -i /dev/video0 -vcodec rawvideo -pix_fmt yuv420p -threads 0 -f v4l2 /dev/video7
+
+# :        gray :      8-bit Greyscale : 1280x720 640x480 640x360 320x240 320x176 160x120 160x96 640x720 1920x1080 2688x1344 2688x1520
+# :        nv12 :         Y/CbCr 4:2:0 : 160x96 160x120 320x176 320x240 640x360 640x480 1280x720 640x720 1920x1080 2688x1344 2688x1520
+# :       rgb24 :                 RGB3 : Emulated : 1280x720 640x480 640x360 320x240 320x176 160x120 160x96 640x720 1920x1080 2688x1344 2688x1520
+# :       bgr24 :                 BGR3 : Emulated : 1280x720 640x480 640x360 320x240 320x176 160x120 160x96 640x720 1920x1080 2688x1344 2688x1520
+# :     yuv420p :                 YU12 : Emulated : 1280x720 640x480 640x360 320x240 320x176 160x120 160x96 640x720 1920x1080 2688x1344 2688x1520
+# :     yuv420p :                 YV12 : Emulated : 1280x720 640x480 640x360 320x240 320x176 160x120 160x96 640x720 1920x1080 2688x1344 2688x1520
+
+sudo modprobe -r v4l2loopback

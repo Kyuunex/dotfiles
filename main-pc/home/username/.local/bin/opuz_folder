@@ -1,0 +1,14 @@
+#!/bin/bash
+for i in * 
+do
+    if test -f "$i" 
+    then
+        if [[ $i != *".opus"* ]]
+        then
+            if [[ $i = *"$@"* ]]
+            then
+                opuz "$PWD/$i"
+            fi
+        fi
+    fi
+done 
