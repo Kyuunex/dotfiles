@@ -39,6 +39,13 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+bindsym $mod+plus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+
+bindsym --whole-window --border $mod+button4 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym --whole-window --border $mod+button5 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -202,13 +209,17 @@ bar {
 
 
 # xprop | grep -i 'class'
-for_window [class="osu!.exe"] floating enable, border none
+
+# for_window [class="osu!.exe"] floating enable, border none
+# for_window [class="explorer.exe"] floating disable, border none
+
+# for_window [class="osu!"] floating disable, border none
 for_window [class="firefox"] border pixel 2
 
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id dunst
 
-#exec /usr/lib/polkit-kde-authentication-agent-1
+# exec /usr/lib/polkit-kde-authentication-agent-1
 
 exec eval $(gnome-keyring-daemon --start)
 exec export SSH_AUTH_SOCK
@@ -222,7 +233,5 @@ client.placeholder      #33D17A #33D17A #000000 #33D17A   #33D17A
 
 client.background       #2D2A2E
 
-
-bindsym --whole-window --border $mod+button4 exec --no-startup-id xdotool key --clearmodifiers g
-bindsym --whole-window --border $mod+button5 exec --no-startup-id xdotool key --clearmodifiers h
-
+# bindsym --whole-window --border $mod+button4 exec --no-startup-id xdotool key --clearmodifiers g
+# bindsym --whole-window --border $mod+button5 exec --no-startup-id xdotool key --clearmodifiers h
