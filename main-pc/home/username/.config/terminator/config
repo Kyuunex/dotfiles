@@ -5,8 +5,7 @@
 [profiles]
   [[default]]
     background_color = "#2d2a2e"
-    background_darkness = 0.95
-    background_type = transparent
+    background_darkness = 1.0
     cursor_color = "#aaaaaa"
     foreground_color = "#ffd866"
     scrollback_lines = 10000

@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Noto Sans 10
+font pango:Noto Sans 9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -194,7 +194,7 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
         position top
-        height 28
+        height 24
 }
 
 # default_border none
@@ -203,6 +203,7 @@ bar {
 
 # xprop | grep -i 'class'
 for_window [class="osu!.exe"] floating enable, border none
+for_window [class="firefox"] border pixel 2
 
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id dunst
@@ -213,10 +214,15 @@ exec eval $(gnome-keyring-daemon --start)
 exec export SSH_AUTH_SOCK
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #FF6188 #FF91AA #000000 #FF6188   #FF6188
-client.focused_inactive #C4A000 #FCE94F #000000 #C4A000   #C4A000
-client.unfocused        #C4A000 #FCE94F #000000 #C4A000   #C4A000
-client.urgent           #3465A4 #729FCF #000000 #3465A4   #3465A4
-client.placeholder      #33D17A #8FF0A4 #000000 #33D17A   #33D17A
+client.focused          #FF6188 #FF6188 #000000 #FF6188   #FF6188
+client.focused_inactive #C4A000 #C4A000 #000000 #C4A000   #C4A000
+client.unfocused        #C4A000 #C4A000 #000000 #C4A000   #C4A000
+client.urgent           #3465A4 #3465A4 #000000 #3465A4   #3465A4
+client.placeholder      #33D17A #33D17A #000000 #33D17A   #33D17A
 
-client.background       #000000
+client.background       #2D2A2E
+
+
+bindsym --whole-window --border $mod+button4 exec --no-startup-id xdotool key --clearmodifiers g
+bindsym --whole-window --border $mod+button5 exec --no-startup-id xdotool key --clearmodifiers h
+
