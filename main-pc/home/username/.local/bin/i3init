@@ -4,4 +4,4 @@ export GTK_THEME=Adwaita:dark
 # export GTK_THEME=Breeze:Dark
 
 export XDG_CURRENT_DESKTOP=i3
-exec i3
+exec xinit /bin/i3
