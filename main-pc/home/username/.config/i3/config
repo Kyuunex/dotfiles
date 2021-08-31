@@ -34,16 +34,16 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-bindsym $mod+plus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym $mod+plus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 
-bindsym --whole-window --border $mod+button4 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym --whole-window --border $mod+button5 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym --whole-window --border $mod+button4 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym --whole-window --border $mod+button5 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -70,8 +70,7 @@ bindsym $mod+t exec terminator -e htop
 bindsym $mod+b exec firefox
 bindsym $mod+k exec kate
 bindsym $mod+i exec dolphin
-# bindsym $mod+p exec grimshot save window
-bindsym $mod+o exec spectacle
+bindsym Print exec /sbin/flameshot gui
 
 # change focus
 # bindsym $mod+j focus left
@@ -207,6 +206,7 @@ bar {
 # default_border none
 # default_floating_border none
 
+#for_window [class=".*"] border pixel 2
 
 # xprop | grep -i 'class'
 
@@ -218,6 +218,8 @@ for_window [class="firefox"] border pixel 2
 
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id dunst
+exec --no-startup-id /sbin/flameshot
+# exec --no-startup-id feh --bg-scale --no-fehbg /home/battler/Pictures/wallpapers/sss.png
 
 # exec /usr/lib/polkit-kde-authentication-agent-1
 
@@ -227,7 +229,8 @@ exec export SSH_AUTH_SOCK
 # class                 border  backgr. text    indicator child_border
 client.focused          #FF6188 #FF6188 #000000 #FF6188   #FF6188
 client.focused_inactive #C4A000 #C4A000 #000000 #C4A000   #C4A000
-client.unfocused        #C4A000 #C4A000 #000000 #C4A000   #C4A000
+#client.unfocused        #C4A000 #C4A000 #000000 #C4A000   #C4A000
+client.unfocused        #43464b #43464b #FFFFFF #43464b   #43464b
 client.urgent           #3465A4 #3465A4 #000000 #3465A4   #3465A4
 client.placeholder      #33D17A #33D17A #000000 #33D17A   #33D17A
 

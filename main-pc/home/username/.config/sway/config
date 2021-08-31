@@ -242,5 +242,24 @@ include /etc/sway/config.d/*
 #exec eval $(gnome-keyring-daemon --start)
 #exec export SSH_AUTH_SOCK
 
-for_window [class="osu!.exe"] border none
+# for_window [class="osu!.exe"] border none
 # for_window [title="\ Sharing\ Indicator$"] floating enable, sticky enable
+for_window [class="firefox"] border pixel 2
+
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #FF6188 #FF6188 #000000 #FF6188   #FF6188
+client.focused_inactive #C4A000 #C4A000 #000000 #C4A000   #C4A000
+#client.unfocused        #C4A000 #C4A000 #000000 #C4A000   #C4A000
+client.unfocused        #43464b #43464b #FFFFFF #43464b   #43464b
+client.urgent           #3465A4 #3465A4 #000000 #3465A4   #3465A4
+client.placeholder      #33D17A #33D17A #000000 #33D17A   #33D17A
+
+
+# bindsym $mod+plus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+# bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+bindsym --whole-window --border $mod+button4 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym --whole-window --border $mod+button5 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+
