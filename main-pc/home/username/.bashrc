@@ -4,13 +4,13 @@ export READER="zathura"
 export TERMINAL="terminator"
 export BROWSER="firefox"
 
+source wm_theme_config
+
 source /etc/profile
 
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-
-# source cch
 
 if [ "$XDG_SESSION_TYPE" == "wayland" ] ; then
     export SDL_VIDEODRIVER=wayland
@@ -21,5 +21,4 @@ fi
 
 export AURDEST="/mnt/ssd/.cache/yay/"
 
-export GTK_THEME=Breeze:Dark
-
+# source cch
