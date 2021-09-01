@@ -216,6 +216,12 @@ bar {
 # for_window [class="osu!"] floating disable, border none
 for_window [class="firefox"] border pixel 2
 
+for_window [class=".*.exe"] floating enable
+
+for_window [class="mpv"] floating enable
+
+for_window [class="steam_app_.*"] floating enable
+
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id dunst
 exec --no-startup-id /sbin/flameshot
