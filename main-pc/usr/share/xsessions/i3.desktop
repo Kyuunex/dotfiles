@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=i3
-Comment=improved dynamic tiling window manager
-Exec=env QT_QPA_PLATFORMTHEME=qt5ct XDG_CURRENT_DESKTOP=i3 i3
-TryExec=env QT_QPA_PLATFORMTHEME=qt5ct XDG_CURRENT_DESKTOP=i3 i3
-Type=Application
-X-LightDM-DesktopName=i3
-DesktopNames=i3
-Keywords=tiling;wm;windowmanager;window;manager;
