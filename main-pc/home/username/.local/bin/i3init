@@ -1,6 +1,7 @@
 #!/bin/sh
 
-source wm_theme_config
+export QT_QPA_PLATFORMTHEME=qt5ct
+export GTK_THEME=Breeze:Dark
 
 export XDG_CURRENT_DESKTOP=i3
-exec xinit /bin/i3
+xinit i3
