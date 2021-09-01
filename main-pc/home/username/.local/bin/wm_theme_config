@@ -1,5 +1,0 @@
-#!/bin/sh
-
-export QT_QPA_PLATFORMTHEME=qt5ct
-# export GTK_THEME=Adwaita:dark
-export GTK_THEME=Breeze:Dark
