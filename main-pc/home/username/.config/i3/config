@@ -70,7 +70,11 @@ bindsym $mod+t exec terminator -e htop
 bindsym $mod+b exec firefox
 bindsym $mod+k exec kate
 bindsym $mod+i exec dolphin
-bindsym Print exec /sbin/flameshot gui
+bindsym Print exec flameshot gui -p '/home/battler/Pictures/Screenshots'
+bindsym $mod+Print exec flameshot screen -c -p '/home/battler/Pictures/Screenshots'
+
+# bindsym --whole-window --border $mod+button4 exec --no-startup-id xdotool key --clearmodifiers g
+# bindsym --whole-window --border $mod+button5 exec --no-startup-id xdotool key --clearmodifiers h
 
 # change focus
 # bindsym $mod+j focus left
@@ -200,47 +204,43 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
         position top
-        height 24
+        # height 20
 }
 
-# default_border none
-# default_floating_border none
-
-#for_window [class=".*"] border pixel 2
 
 # xprop | grep -i 'class'
 
+# for_window [class=".*"] border pixel 2
 # for_window [class="osu!.exe"] floating enable, border none
-# for_window [class="explorer.exe"] floating disable, border none
-
 # for_window [class="osu!"] floating disable, border none
+# for_window [class="explorer.exe"] floating disable, border none
+# for_window [class="^([^o].*|o[^s].*|os[^u].*|osu[^!].*|osu!.+)\.exe$"] floating enable
 for_window [class="firefox"] border pixel 2
-
+for_window [class="chromium"] border pixel 2
 for_window [class=".*.exe"] floating enable
-
 for_window [class="mpv"] floating enable
-
 for_window [class="steam_app_.*"] floating enable
+for_window [class="gwenview"] floating enable
+# default_border none
+# default_floating_border none
+
 
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id dunst
-exec --no-startup-id /sbin/flameshot
+exec --no-startup-id flameshot
+# exec --no-startup-id otd
 # exec --no-startup-id feh --bg-scale --no-fehbg /home/battler/Pictures/wallpapers/sss.png
-
 # exec /usr/lib/polkit-kde-authentication-agent-1
 
 exec eval $(gnome-keyring-daemon --start)
 exec export SSH_AUTH_SOCK
 
+
 # class                 border  backgr. text    indicator child_border
 client.focused          #FF6188 #FF6188 #000000 #FF6188   #FF6188
-client.focused_inactive #C4A000 #C4A000 #000000 #C4A000   #C4A000
-#client.unfocused        #C4A000 #C4A000 #000000 #C4A000   #C4A000
+client.focused_inactive #43464b #43464b #FFFFFF #43464b   #43464b
 client.unfocused        #43464b #43464b #FFFFFF #43464b   #43464b
 client.urgent           #3465A4 #3465A4 #000000 #3465A4   #3465A4
 client.placeholder      #33D17A #33D17A #000000 #33D17A   #33D17A
-
 client.background       #2D2A2E
 
-# bindsym --whole-window --border $mod+button4 exec --no-startup-id xdotool key --clearmodifiers g
-# bindsym --whole-window --border $mod+button5 exec --no-startup-id xdotool key --clearmodifiers h
