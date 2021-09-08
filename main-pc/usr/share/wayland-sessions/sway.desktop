@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Sway
+Name=Sway (Custom)
 Comment=An i3-compatible Wayland compositor
-Exec=env QT_QPA_PLATFORMTHEME=qt5ct XDG_CURRENT_DESKTOP=sway sway
+Exec=env QT_QPA_PLATFORMTHEME=qt5ct GTK_THEME=Breeze:Dark XDG_CURRENT_DESKTOP=sway sway
 Type=Application
