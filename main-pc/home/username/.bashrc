@@ -2,7 +2,7 @@ export EDITOR="nano"
 export SUDO_EDITOR="nano"
 export READER="zathura"
 export TERMINAL="terminator"
-export BROWSER="firefox"
+export BROWSER="chromium"
 
 source /etc/profile
 
