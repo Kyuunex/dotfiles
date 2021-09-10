@@ -67,7 +67,7 @@ bindsym $mod+d exec "rofi -modi drun,run -show drun"
 bindsym $mod+q exec sgtk-menu
 bindsym $mod+p exec pavucontrol
 bindsym $mod+t exec terminator -e htop
-bindsym $mod+b exec firefox
+bindsym $mod+b exec chromium
 bindsym $mod+k exec kate
 bindsym $mod+i exec dolphin
 bindsym Print exec flameshot gui -p '/home/battler/Pictures/Screenshots'
@@ -217,6 +217,7 @@ bar {
 # for_window [class="^([^o].*|o[^s].*|os[^u].*|osu[^!].*|osu!.+)\.exe$"] floating enable
 for_window [class="firefox"] border pixel 2
 for_window [class="chromium"] border pixel 2
+for_window [class="Chromium"] border pixel 2
 for_window [class=".*.exe"] floating enable
 for_window [class="mpv"] floating enable
 for_window [class="steam_app_.*"] floating enable
@@ -237,10 +238,11 @@ exec export SSH_AUTH_SOCK
 
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #FF6188 #FF6188 #000000 #FF6188   #FF6188
-client.focused_inactive #43464b #43464b #FFFFFF #43464b   #43464b
-client.unfocused        #43464b #43464b #FFFFFF #43464b   #43464b
-client.urgent           #3465A4 #3465A4 #000000 #3465A4   #3465A4
-client.placeholder      #33D17A #33D17A #000000 #33D17A   #33D17A
+client.focused          #E5A50A #E5A50A #000000 #E5A50A   #E5A50A
+client.focused_inactive #393c41 #43464B #FFFFFF #43464B   #393c41
+client.unfocused        #393c41 #43464B #FFFFFF #43464B   #393c41
+client.urgent           #FF6188 #FF6188 #000000 #FF6188   #FF6188
+client.placeholder      #3465A4 #3465A4 #000000 #3465A4   #3465A4
+
 client.background       #2D2A2E
 
