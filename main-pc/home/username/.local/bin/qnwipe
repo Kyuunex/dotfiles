@@ -1,0 +1,28 @@
+#!/bin/bash
+
+echo "This script is meant to securely wipe a drive"
+echo "Useful if you wanna sell or a donate a drive and don't want your data recovered"
+
+export DISKTOWIPE="$@"
+export LANG=C
+
+echo "You are attempting to wipe $DISKTOWIPE"
+echo "There is no further confirmation"
+echo "You have 15 seconds to change your mind"
+
+sleep 15
+
+echo "Pass 1 started"
+dd if=/dev/zero of=$DISKTOWIPE bs=1024k status=progress
+
+echo "Pass 2 started"
+tr '\0' '\377' < /dev/zero | dd of=$DISKTOWIPE bs=1024k status=progress
+
+echo "Pass 3 started"
+dd if=/dev/random of=$DISKTOWIPE bs=1024k status=progress
+
+echo "Pass 4 started"
+dd if=/dev/zero of=$DISKTOWIPE bs=1024k status=progress
+
+
+echo "ALL DONE"
