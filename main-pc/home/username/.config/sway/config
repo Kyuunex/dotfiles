@@ -1,12 +1,12 @@
+# Packages required: terminator noto-fonts wofi xorg-xwayland swayidle swaylock ungoogled-chromium sgtk-menu dolphin kate dmenu grim grimshot wl-clipboard slurp mako kdeconnect gnome-keyring
+
 # Default config for sway
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
 
-exec mako
-
-font pango:"Noto Sans" Medium 10
+font pango:"Noto Sans" Regular 9
 
 ### Variables
 #
@@ -35,8 +35,11 @@ output * bg /home/battler/Pictures/wallpapers/sss.png fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-output DP-1 pos 0 0 res 1920x1080@143.850Hz
-output HDMI-A-1 pos -1920 0 res 1920x1080@60.000Hz
+# output DP-1 pos 0 0 res 1920x1080@143.850Hz
+# output HDMI-A-1 pos -1920 0 res 1920x1080@60.000Hz
+
+output DP-1 pos 1920 0 res 1920x1080@143.850Hz
+output HDMI-A-1 pos 0 0 res 1920x1080@60.000Hz
 
 output DP-1 adaptive_sync off
 
@@ -78,6 +81,19 @@ input "type:keyboard" {
 
 input * accel_profile flat
 
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+bindsym $mod+plus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+bindsym --whole-window --border $mod+button4 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym --whole-window --border $mod+button5 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+
 ### Key bindings
 #
 # Basics:
@@ -105,14 +121,14 @@ input * accel_profile flat
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
     bindsym $mod+l exec swaylock -f -c 222222
-    bindsym $mod+b exec firefox
+    bindsym $mod+b exec chromium
     bindsym $mod+q exec sgtk-menu
     bindsym $mod+k exec kate
     bindsym $mod+i exec dolphin
+    bindsym $mod+z exec dmenu
 
-    bindsym $mod+p exec grimshot save window
-    bindsym $mod+o exec grimshot save area
-
+    bindsym Print exec grimshot save area
+    bindsym $mod+Print exec grimshot save window
 
 #
 # Moving around:
@@ -201,7 +217,7 @@ input * accel_profile flat
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    # bindsym $mod+minus scratchpad show
 #
 # Resizing containers:
 #
@@ -235,31 +251,49 @@ bar {
     swaybar_command waybar
 }
 
-include /etc/sway/config.d/*
 
-#exec /usr/lib/polkit-kde-authentication-agent-1
+# xprop | grep -i 'class'
 
-#exec eval $(gnome-keyring-daemon --start)
-#exec export SSH_AUTH_SOCK
-
-# for_window [class="osu!.exe"] border none
-# for_window [title="\ Sharing\ Indicator$"] floating enable, sticky enable
+# for_window [class=".*"] border pixel 2
+# for_window [class="osu!.exe"] floating enable, border none
+# for_window [class="osu!"] floating disable, border none
+# for_window [class="explorer.exe"] floating disable, border none
+# for_window [class="^([^o].*|o[^s].*|os[^u].*|osu[^!].*|osu!.+)\.exe$"] floating enable
 for_window [class="firefox"] border pixel 2
+for_window [class="chromium"] border pixel 2
+for_window [class="Chromium"] border pixel 2
+for_window [class="brave-browser"] border pixel 2
+for_window [class="Brave-browser"] border pixel 2
+for_window [class="vmware"] border pixel 2
+for_window [class="Vmware"] border pixel 2
+for_window [class=".*.exe"] floating enable
+for_window [class="mpv"] floating enable
+for_window [class="spine"] floating enable
+for_window [class="steam_app_.*"] floating enable
+for_window [class="steam_proton"] floating enable
+for_window [class="spek"] floating enable
+for_window [class="Spek"] floating enable
+for_window [class="gwenview"] floating enable
+for_window [title="Copying — Dolphin"] floating enable
+# default_border none
+# default_floating_border none
+
+
+exec --no-startup-id /usr/lib/kdeconnectd
+exec --no-startup-id mako
+# exec --no-startup-id otd
+# exec /usr/lib/polkit-kde-authentication-agent-1
+
+exec eval $(gnome-keyring-daemon --start)
+exec export SSH_AUTH_SOCK
 
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #FF6188 #FF6188 #000000 #FF6188   #FF6188
-client.focused_inactive #C4A000 #C4A000 #000000 #C4A000   #C4A000
-#client.unfocused        #C4A000 #C4A000 #000000 #C4A000   #C4A000
-client.unfocused        #43464b #43464b #FFFFFF #43464b   #43464b
-client.urgent           #3465A4 #3465A4 #000000 #3465A4   #3465A4
-client.placeholder      #33D17A #33D17A #000000 #33D17A   #33D17A
+client.focused          #E5A50A #E5A50A #000000 #E5A50A   #E5A50A
+client.focused_inactive #393c41 #43464B #FFFFFF #43464B   #393c41
+client.unfocused        #393c41 #43464B #FFFFFF #43464B   #393c41
+client.urgent           #FF6188 #FF6188 #000000 #FF6188   #FF6188
+client.placeholder      #3465A4 #3465A4 #000000 #3465A4   #3465A4
+client.background       #2D2A2E
 
-
-# bindsym $mod+plus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-# bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-
-bindsym --whole-window --border $mod+button4 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym --whole-window --border $mod+button5 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-
-
+include /etc/sway/config.d/*
