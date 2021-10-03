@@ -249,7 +249,7 @@ exec export SSH_AUTH_SOCK
 
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #E5A50A #E5A50A #000000 #E5A50A   #E5A50A
+client.focused          #499980 #499980 #000000 #499980   #499980
 client.focused_inactive #393c41 #43464B #FFFFFF #43464B   #393c41
 client.unfocused        #393c41 #43464B #FFFFFF #43464B   #393c41
 client.urgent           #FF6188 #FF6188 #000000 #FF6188   #FF6188
