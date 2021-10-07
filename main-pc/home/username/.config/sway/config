@@ -1,4 +1,4 @@
-# Packages required: terminator noto-fonts wofi xorg-xwayland swayidle swaylock ungoogled-chromium sgtk-menu dolphin kate dmenu grim grimshot wl-clipboard slurp mako kdeconnect gnome-keyring
+# Packages required: terminator noto-fonts wofi xorg-xwayland swayidle swaylock ungoogled-chromium sgtk-menu dolphin kate dmenu grim grimshot wl-clipboard slurp mako kdeconnect gnome-keyring polkit-dumb-agent-git
 
 # Default config for sway
 #
@@ -282,7 +282,7 @@ for_window [title="Copying — Dolphin"] floating enable
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id mako
 # exec --no-startup-id otd
-# exec /usr/lib/polkit-kde-authentication-agent-1
+exec /usr/bin/polkit-dumb-agent
 
 exec eval $(gnome-keyring-daemon --start)
 exec export SSH_AUTH_SOCK
