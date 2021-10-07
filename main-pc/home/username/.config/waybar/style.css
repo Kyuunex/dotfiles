@@ -39,6 +39,7 @@ window#waybar.chromium {
 
 #workspaces button {
     padding: 0 5px;
+    min-width: 15px;
     background-color: transparent;
     /* background-color: #555555; */
     color: #ffffff;
@@ -66,6 +67,9 @@ window#waybar.chromium {
     border-bottom: 3px solid #ffffff;
 }
 
+#custom-adaptivesync,
+#custom-windowclose,
+#custom-bluetooth,
 #clock,
 #battery,
 #cpu,
@@ -232,8 +236,8 @@ label:focus {
 
 #custom-sgtk-menu {
     /* background-color: #d9585f; */
-    /* background-color: #222222; */
-    background-color: transparent;
+    background-color: #222222;
+    /*background-color: transparent;*/
     padding-right: 14px;
     padding-left: 14px;
     /* margin: 0 4px; */
@@ -246,22 +250,16 @@ label:focus {
 }
 
 #custom-bluetooth {
-    padding: 0 10px;
-    margin: 0 4px;
     color: #ffffff;
     background-color: #133ebf;
 }
 
 #custom-windowclose {
-    padding: 0 10px;
-    margin: 0 4px;
     color: #ffffff;
     background-color: #ff6666;
 }
 
 #custom-adaptivesync {
-    padding: 0 10px;
-    margin: 0 4px;
     color: #ffffff;
     background-color: #227722;
 }
