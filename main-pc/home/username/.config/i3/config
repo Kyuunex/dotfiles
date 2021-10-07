@@ -28,7 +28,7 @@ font pango:Noto Sans 9
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 222222 --nofork
 
-bindsym $mod+l exec i3lock -c 111111
+bindsym $mod+l exec --no-startup-id i3lock -c 111111
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -242,10 +242,10 @@ exec --no-startup-id dunst
 exec --no-startup-id flameshot
 # exec --no-startup-id otd
 # exec --no-startup-id feh --bg-scale --no-fehbg /home/battler/Pictures/wallpapers/sss.png
-exec /usr/bin/polkit-dumb-agent
+exec --no-startup-id /usr/bin/polkit-dumb-agent
 
-exec eval $(gnome-keyring-daemon --start)
-exec export SSH_AUTH_SOCK
+exec --no-startup-id eval $(gnome-keyring-daemon --start)
+exec --no-startup-id export SSH_AUTH_SOCK
 
 
 # class                 border  backgr. text    indicator child_border
