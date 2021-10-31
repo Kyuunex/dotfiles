@@ -6,7 +6,7 @@
 # [[ $- != *i* ]] && return
 
 # export QT_QPA_PLATFORMTHEME=qt5ct
-# export GTK_THEME=Breeze:Dark
+# export GTK_THEME=Materia-dark:Dark
 
 export EDITOR="nano"
 export SUDO_EDITOR="nano"

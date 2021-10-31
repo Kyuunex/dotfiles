@@ -3,10 +3,10 @@
 # dmenu flameshot dunst kdeconnect gnome-keyring network-manager-applet blueberry
 # pulseaudio or pipewire-pulse
 ## From AUR:
-# i3lock-color ungoogled-chromium sgtk-menu polkit-dumb-agent-git
+# i3lock-color ungoogled-chromium sgtk-menu polkit-dumb-agent-git qt5ct-kde
 
 ### Packages required on Debian:
-# terminator fonts-noto rofi xss-lock i3blocks i3lock dolphin kate feh pavucontrol-qt kate
+# terminator fonts-noto rofi xss-lock i3blocks i3lock dolphin kate feh pavucontrol-qt kate qt5ct
 # suckless-tools flameshot dunst kdeconnect gnome-keyring network-manager-gnome pulseaudio gnome-bluetooth
 
 # i3 config file (v4)
