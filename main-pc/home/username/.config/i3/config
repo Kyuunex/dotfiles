@@ -1,7 +1,13 @@
-### Packages required:
-# terminator noto-fonts rofi xss-lock i3idle i3lock-color ungoogled-chromium sgtk-menu dolphin kate feh
-# dmenu flameshot dunst kdeconnect gnome-keyring polkit-dumb-agent-git network-manager-applet
+### Packages required on Arch:
+# terminator noto-fonts rofi xss-lock i3blocks dolphin kate feh pavucontrol-qt kate
+# dmenu flameshot dunst kdeconnect gnome-keyring network-manager-applet blueberry
 # pulseaudio or pipewire-pulse
+## From AUR:
+# i3lock-color ungoogled-chromium sgtk-menu polkit-dumb-agent-git
+
+### Packages required on Debian:
+# terminator fonts-noto rofi xss-lock i3blocks i3lock dolphin kate feh pavucontrol-qt kate
+# suckless-tools flameshot dunst kdeconnect gnome-keyring network-manager-gnome pulseaudio gnome-bluetooth
 
 # i3 config file (v4)
 #
@@ -58,14 +64,14 @@ client.placeholder      #3465A4 #3465A4 #000000 #3465A4   #3465A4
 client.background       #2D2A2E
 
 # Wallpaper
-# exec --no-startup-id feh --bg-scale --no-fehbg "$HOME/Pictures/wallpapers/sss.png"
+exec --no-startup-id feh --no-fehbg --bg-fill "$HOME/.wallpaper"
 
 
 ### Idle and Lockscreen configuration
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-set $lock_cmdline i3lock -c 000000 --nofork --clock --keylayout 0
+set $lock_cmdline i3lock -c 000000 -i "$HOME/.lockscreen" --fill --nofork --clock --keylayout 0
 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- $lock_cmdline
 bindsym $mod+l exec --no-startup-id $lock_cmdline
@@ -88,6 +94,11 @@ bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 
 bindsym --whole-window --border $mod+button4 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
 bindsym --whole-window --border $mod+button5 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+
+
+### Brightness control keybinds
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +10%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 10%-
 
 
 ### Keybinds
@@ -291,6 +302,7 @@ for_window [class="pavucontrol-qt"] floating disable
 ### Services
 
 exec --no-startup-id /usr/lib/kdeconnectd
+exec --no-startup-id /usr/bin/kdeconnect-indicator
 exec --no-startup-id dunst
 exec --no-startup-id flameshot
 # exec --no-startup-id otd
