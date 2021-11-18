@@ -1,12 +1,14 @@
 ### Packages required on Arch:
-# terminator noto-fonts rofi xss-lock i3blocks dolphin kate feh pavucontrol-qt kate
+# xorg-server xorg-xinit xorg-xrandr
+# terminator noto-fonts rofi xss-lock i3blocks dolphin kate feh pavucontrol-qt
 # dmenu flameshot dunst kdeconnect gnome-keyring network-manager-applet blueberry
 # pulseaudio or pipewire-pulse
 ## From AUR:
 # i3lock-color ungoogled-chromium sgtk-menu polkit-dumb-agent-git qt5ct-kde
 
 ### Packages required on Debian:
-# terminator fonts-noto rofi xss-lock i3blocks i3lock dolphin kate feh pavucontrol-qt kate qt5ct
+# xserver-xorg-core xinit x11-xserver-utils
+# terminator fonts-noto rofi xss-lock i3blocks i3lock dolphin kate feh pavucontrol-qt qt5ct i3status
 # suckless-tools flameshot dunst kdeconnect gnome-keyring network-manager-gnome pulseaudio gnome-bluetooth
 
 # i3 config file (v4)
