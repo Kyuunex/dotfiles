@@ -20,7 +20,7 @@ client.placeholder      #3465A4 #3465A4 #000000 #3465A4   #3465A4
 client.background       #2D2A2E
 
 # Wallpaper
-output * bg "$HOME/Pictures/wallpapers/sss.png" fill
+output * bg "$HOME/.config/wallpaper-image" fill
 
 
 ### Variables
@@ -309,6 +309,7 @@ for_window [title="Copying — Dolphin"] floating enable
 ### Services
 
 exec --no-startup-id /usr/lib/kdeconnectd
+exec --no-startup-id /usr/bin/kdeconnect-indicator
 exec --no-startup-id mako
 # exec --no-startup-id otd
 exec /usr/bin/polkit-dumb-agent
@@ -316,6 +317,8 @@ exec /usr/bin/polkit-dumb-agent
 
 exec eval $(gnome-keyring-daemon --start)
 exec export SSH_AUTH_SOCK
+
+exec --no-startup-id secret_script_1
 
 
 include /etc/sway/config.d/*
