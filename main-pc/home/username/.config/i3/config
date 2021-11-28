@@ -1,6 +1,6 @@
 ### Packages required on Arch:
 # xorg-server xorg-xinit xorg-xrandr
-# terminator noto-fonts rofi xss-lock i3blocks dolphin kate feh pavucontrol-qt
+# terminator noto-fonts rofi xss-lock i3-wm i3blocks dolphin kate feh pavucontrol-qt
 # dmenu flameshot dunst kdeconnect gnome-keyring network-manager-applet blueberry
 # pulseaudio or pipewire-pulse
 ## From AUR:
@@ -8,7 +8,7 @@
 
 ### Packages required on Debian:
 # xserver-xorg-core xinit x11-xserver-utils
-# terminator fonts-noto rofi xss-lock i3blocks i3lock dolphin kate feh pavucontrol-qt qt5ct i3status
+# terminator fonts-noto rofi xss-lock i3-wm i3blocks i3lock dolphin kate feh pavucontrol-qt qt5ct i3status
 # suckless-tools flameshot dunst kdeconnect gnome-keyring network-manager-gnome pulseaudio gnome-bluetooth
 
 # i3 config file (v4)
@@ -40,7 +40,7 @@ set $bluetooth_gui blueberry
 set $audio_gui pavucontrol-qt
 
 # Menu
-set $menu "rofi -modi drun,run -show drun"
+set $menu "rofi -modi window,drun,ssh,combi,run -show drun -theme arthur -combi-modi window,drun,ssh -show-icons -font 'Noto Sans 16'"
 
 # refresh_i3status cmdline
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -66,14 +66,14 @@ client.placeholder      #3465A4 #3465A4 #000000 #3465A4   #3465A4
 client.background       #2D2A2E
 
 # Wallpaper
-exec --no-startup-id feh --no-fehbg --bg-fill "$HOME/.wallpaper"
+exec --no-startup-id feh --no-fehbg --bg-fill "$HOME/.config/wallpaper-image"
 
 
 ### Idle and Lockscreen configuration
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-set $lock_cmdline i3lock -c 000000 -i "$HOME/.lockscreen" --fill --nofork --clock --keylayout 0
+set $lock_cmdline i3lock -c 000000 -i "$HOME/.config/lockscreen-image" --fill --nofork --clock --keylayout 0
 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- $lock_cmdline
 bindsym $mod+l exec --no-startup-id $lock_cmdline
@@ -313,4 +313,4 @@ exec --no-startup-id /usr/bin/polkit-dumb-agent
 exec --no-startup-id eval $(gnome-keyring-daemon --start)
 exec --no-startup-id export SSH_AUTH_SOCK
 
-
+exec --no-startup-id secret_script_1
