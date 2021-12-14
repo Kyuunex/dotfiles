@@ -73,7 +73,7 @@ exec --no-startup-id feh --no-fehbg --bg-fill "$HOME/.config/wallpaper-image"
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-set $lock_cmdline i3lock -c 000000 -i "$HOME/.config/lockscreen-image" --fill --nofork --clock --keylayout 0
+set $lock_cmdline i3lock -c 000000 -i "$HOME/.config/lockscreen-image" --fill --nofork --clock --keylayout 0 --time-color=FFFFFF --date-color=FFFFFF --layout-color=FFFFFF --date-str="%A %d/%b/%Y"
 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- $lock_cmdline
 bindsym $mod+l exec --no-startup-id $lock_cmdline
@@ -264,11 +264,12 @@ bindsym $mod+r mode "resize"
 ### Bar
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-        position top
-        # height 20
-}
+# bar {
+#         status_command i3status
+#         position top
+#         # height 20
+# }
+exec --no-startup-id $HOME/.config/polybar/launch.sh
 
 
 ### Window specific overrides

@@ -74,7 +74,7 @@ output HDMI-A-1 pos 0 0 res 1920x1080@60.000Hz
 output DP-1 adaptive_sync off
 
 # Don't forget xwayland
-xwayland enable
+xwayland disable
 
 
 ### Idle and Lockscreen configuration
