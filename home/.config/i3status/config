@@ -16,7 +16,8 @@ order += "wireless _first_"
 order += "ethernet _first_"
 # order += "battery all"
 # order += "disk /"
-order += "load"
+order += "cpu_usage"
+order += "cpu_temperature 0"
 order += "memory"
 order += "tztime local"
 
@@ -42,8 +43,17 @@ load {
         format = "%1min"
 }
 
+cpu_usage {
+        format = "CPU: %usage"
+}
+
+cpu_temperature 0 {
+        format = "T: %degrees °C"
+        path = "/sys/class/hwmon/hwmon1/temp1_input"
+}
+
 memory {
-        format = "%used / %available"
+        format = "RAM: %used / %available"
         threshold_degraded = "1G"
         format_degraded = "MEMORY < %available"
 }
