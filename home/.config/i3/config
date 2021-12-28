@@ -39,6 +39,9 @@ set $bluetooth_gui blueberry
 # Audio GUI
 set $audio_gui pavucontrol-qt
 
+# Primary IM software
+set $im discord
+
 # Menu
 set $menu "rofi -modi window,drun,ssh,combi,run -show drun -theme arthur -combi-modi window,drun,ssh -show-icons -font 'Noto Sans 16'"
 
@@ -109,16 +112,16 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 10%-
 bindsym $mod+Return exec $term
 
 # Software
-bindsym $mod+z exec --no-startup-id dmenu_run
-bindsym $mod+d exec $menu
-bindsym $mod+q exec sgtk-menu
-bindsym $mod+y exec discord
-bindsym $mod+p exec $audio_gui
-bindsym $mod+t exec $term -e htop
 bindsym $mod+b exec $browser
+bindsym $mod+d exec $menu
+bindsym $mod+i exec $file_manager
 bindsym $mod+k exec $text_editor
 bindsym $mod+o exec $bluetooth_gui
-bindsym $mod+i exec $file_manager
+bindsym $mod+p exec $audio_gui
+bindsym $mod+q exec sgtk-menu
+bindsym $mod+t exec $term -e htop
+bindsym $mod+y exec $im
+bindsym $mod+z exec --no-startup-id dmenu_run
 
 # Screenshots
 bindsym Print exec flameshot gui -p "$HOME/Pictures/Screenshots"
@@ -291,6 +294,7 @@ for_window [class="virt-manager"] border pixel 2
 for_window [class="Virt-manager"] border pixel 2
 for_window [class=".*.exe"] floating enable
 for_window [class="mpv"] floating enable
+for_window [class="onscripter-ru.*"] floating enable
 for_window [class="spine"] floating enable
 for_window [class="steam_app_.*"] floating enable
 for_window [class="steam_proton"] floating enable
