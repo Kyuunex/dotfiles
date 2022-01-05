@@ -67,8 +67,9 @@ window#waybar.chromium {
     border-bottom: 3px solid #ffffff;
 }
 
-#custom-adaptivesync,
-#custom-windowclose,
+#custom-menu-button,
+#custom-adaptive-sync,
+#custom-window-close,
 #custom-bluetooth,
 #clock,
 #battery,
@@ -234,32 +235,18 @@ label:focus {
     min-width: 16px;
 }
 
-#custom-sgtk-menu {
-    /* background-color: #d9585f; */
-    background-color: #222222;
-    /*background-color: transparent;*/
-    padding-right: 14px;
-    padding-left: 14px;
-    /* margin: 0 4px; */
-    margin-left: 2px;
-    font-size: 14px;
-    background-image: url('file:///home/battler/.local/share/icons/waybar-arch.svg');
-    background-size: 18px 18px;
-    background-repeat: no-repeat;
-    background-position: center; 
+#custom-menu-button {
+    background-color: #d9585f;
 }
 
 #custom-bluetooth {
-    color: #ffffff;
     background-color: #133ebf;
 }
 
-#custom-windowclose {
-    color: #ffffff;
+#custom-window-close {
     background-color: #ff6666;
 }
 
-#custom-adaptivesync {
-    color: #ffffff;
+#custom-adaptive-sync {
     background-color: #227722;
 }

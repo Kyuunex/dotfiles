@@ -44,6 +44,7 @@ set $im discord
 
 # Menu
 set $menu "rofi -modi window,drun,ssh,combi,run -show drun -theme arthur -combi-modi window,drun,ssh -show-icons -font 'Noto Sans 16'"
+set $dmenu "dmenu_run"
 
 # refresh_i3status cmdline
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -121,7 +122,7 @@ bindsym $mod+p exec $audio_gui
 bindsym $mod+q exec sgtk-menu
 bindsym $mod+t exec $term -e htop
 bindsym $mod+y exec $im
-bindsym $mod+z exec --no-startup-id dmenu_run
+bindsym $mod+z exec --no-startup-id $dmenu
 
 # Screenshots
 bindsym Print exec flameshot gui -p "$HOME/Pictures/Screenshots"
@@ -302,6 +303,7 @@ for_window [class="spek"] floating enable
 for_window [class="Spek"] floating enable
 for_window [class="gwenview"] floating enable
 for_window [class="pavucontrol-qt"] floating disable
+for_window [class="mupen64plus"] floating enable
 # default_border none
 # default_floating_border none
 

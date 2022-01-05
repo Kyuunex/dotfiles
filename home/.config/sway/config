@@ -38,7 +38,7 @@ set $right Right
 set $term terminator
 
 # Browser
-set $browser "chromium --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-gpu --enable-features=WebRTCPipeWireCapturer,VaapiVideoDecoder --ozone-platform=wayland --disable-gpu-memory-buffer-video-frames"
+set $browser chromium
 
 # File manager
 set $file_manager dolphin
@@ -53,14 +53,14 @@ set $bluetooth_gui blueberry
 set $audio_gui pavucontrol-qt
 
 # Primary IM software
-set $im "discord --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-gpu --enable-features=WebRTCPipeWireCapturer,VaapiVideoDecoder --ozone-platform=wayland --disable-gpu-memory-buffer-video-frames"
+set $im discord
 
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wofi --show run
-
+set $menu "wofi --show drun --allow-images"
+set $dmenu "wofi --show run"
 
 ### Output configuration
 
@@ -140,7 +140,7 @@ bindsym $mod+p exec $audio_gui
 bindsym $mod+q exec sgtk-menu
 bindsym $mod+t exec $term -e htop
 bindsym $mod+y exec $im
-bindsym $mod+z exec --no-startup-id dmenu_run
+bindsym $mod+z exec $dmenu
 
 # Screenshots
 bindsym Print exec grimshot save area
@@ -327,7 +327,7 @@ exec /usr/bin/polkit-dumb-agent
 exec eval $(gnome-keyring-daemon --start)
 exec export SSH_AUTH_SOCK
 
-exec --no-startup-id secret_script_1
+# exec --no-startup-id secret_script_1
 
 
 include /etc/sway/config.d/*
