@@ -60,7 +60,7 @@ set $im discord
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu "wofi --show drun --allow-images"
-set $dmenu "wofi --show run"
+set $run "wofi --show run"
 
 ### Output configuration
 
@@ -140,7 +140,7 @@ bindsym $mod+p exec $audio_gui
 bindsym $mod+q exec sgtk-menu
 bindsym $mod+t exec $term -e htop
 bindsym $mod+y exec $im
-bindsym $mod+z exec $dmenu
+bindsym $mod+z exec $run
 
 # Screenshots
 bindsym Print exec grimshot save area

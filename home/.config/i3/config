@@ -44,7 +44,7 @@ set $im discord
 
 # Menu
 set $menu "rofi -modi window,drun,ssh,combi,run -show drun -theme arthur -combi-modi window,drun,ssh -show-icons -font 'Noto Sans 16'"
-set $dmenu "dmenu_run"
+set $run "rofi -show run -theme arthur -show-icons -font 'Noto Sans 16'"
 
 # refresh_i3status cmdline
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -122,7 +122,7 @@ bindsym $mod+p exec $audio_gui
 bindsym $mod+q exec sgtk-menu
 bindsym $mod+t exec $term -e htop
 bindsym $mod+y exec $im
-bindsym $mod+z exec --no-startup-id $dmenu
+bindsym $mod+z exec --no-startup-id $run
 
 # Screenshots
 bindsym Print exec flameshot gui -p "$HOME/Pictures/Screenshots"
@@ -321,3 +321,4 @@ exec --no-startup-id eval $(gnome-keyring-daemon --start)
 exec --no-startup-id export SSH_AUTH_SOCK
 
 exec --no-startup-id secret_script_1
+exec --no-startup-id /usr/local/bin/electron-mail
