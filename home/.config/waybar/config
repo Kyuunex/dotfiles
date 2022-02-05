@@ -6,7 +6,7 @@
     // Choose the order of the modules
     "modules-left": ["custom/menu-button", "sway/workspaces", "sway/mode", "custom/media"],
     // "modules-center": ["sway/window"],
-    "modules-right": ["custom/adaptive-sync", "idle_inhibitor", "pulseaudio", "custom/bluetooth", "network", "cpu", "memory", "temperature", "backlight", "sway/language", "clock", "tray", "custom/window-close"],
+    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "sway/language", "clock", "tray", "custom/window-close"],
     // Modules configuration
     "sway/workspaces": {
     //     "disable-scroll": true,
@@ -175,7 +175,7 @@
     },
     "custom/adaptive-sync": {
         "format": " ",
-        "on-click": "exec swaymsg output DP-1 adaptive_sync on",
-        "on-click-right": "exec swaymsg output DP-1 adaptive_sync off"
+        "on-click": "exec swaymsg -- output DP-1 adaptive_sync on",
+        "on-click-right": "exec swaymsg -- output DP-1 adaptive_sync off"
     }
 }

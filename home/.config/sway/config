@@ -12,7 +12,7 @@ font pango:"Noto Sans" Regular 9
 
 # Colours
 # class                 border  backgr. text    indicator child_border
-client.focused          #499980 #499980 #000000 #499980   #499980
+client.focused          #498099 #498099 #000000 #498099   #498099
 client.focused_inactive #393c41 #43464B #FFFFFF #43464B   #393c41
 client.unfocused        #393c41 #43464B #FFFFFF #43464B   #393c41
 client.urgent           #FF6188 #FF6188 #000000 #FF6188   #FF6188
@@ -326,6 +326,9 @@ exec /usr/bin/polkit-dumb-agent
 
 exec eval $(gnome-keyring-daemon --start)
 exec export SSH_AUTH_SOCK
+
+# exec --no-startup-id /usr/lib/pam_kwallet_init
+
 
 # exec --no-startup-id secret_script_1
 
