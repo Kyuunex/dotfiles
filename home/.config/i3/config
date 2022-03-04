@@ -328,3 +328,4 @@ exec --no-startup-id export SSH_AUTH_SOCK
 
 exec --no-startup-id secret_script_1
 exec --no-startup-id /usr/local/bin/electron-mail
+exec --no-startup-id slack -u
