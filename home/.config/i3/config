@@ -119,7 +119,7 @@ bindsym $mod+i exec $file_manager
 bindsym $mod+k exec $text_editor
 bindsym $mod+o exec $bluetooth_gui
 bindsym $mod+p exec $audio_gui
-bindsym $mod+q exec sgtk-menu
+bindsym $mod+u exec sgtk-menu
 bindsym $mod+t exec $term -e htop
 bindsym $mod+y exec $im
 bindsym $mod+z exec --no-startup-id $run
@@ -163,6 +163,9 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+# toggle split orientation
+bindsym $mod+q split toggle
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -318,7 +321,8 @@ exec --no-startup-id /usr/bin/kdeconnect-indicator
 exec --no-startup-id dunst
 exec --no-startup-id flameshot
 # exec --no-startup-id otd
-exec --no-startup-id /usr/bin/polkit-dumb-agent
+# exec --no-startup-id /usr/bin/polkit-dumb-agent
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 
 exec --no-startup-id eval $(gnome-keyring-daemon --start)
 exec --no-startup-id export SSH_AUTH_SOCK

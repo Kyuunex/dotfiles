@@ -5,11 +5,11 @@
 [profiles]
   [[default]]
     background_color = "#2d2a2e"
-    background_darkness = 1.0
+    background_darkness = 0.52
     cursor_color = "#aaaaaa"
     foreground_color = "#ffd866"
     scrollback_lines = 10000
-    palette = "#2e3436:#d74669:#33d17a:#c4a000:#3465a4:#dc8add:#06989a:#d3d7cf:#555753:#ff6188:#8ff0a4:#fce94f:#729fcf:#c061cb:#34e2e2:#eeeeec"
+    palette = "#986a44:#d74669:#33d17a:#c4a000:#3465a4:#dc8add:#06989a:#d3d7cf:#cdab8f:#ff6188:#8ff0a4:#fce94f:#729fcf:#c061cb:#34e2e2:#eeeeec"
 [layouts]
   [[default]]
     [[[window0]]]
