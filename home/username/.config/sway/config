@@ -1,6 +1,6 @@
 ### Packages required:
 # terminator noto-fonts wofi xorg-xwayland swayidle swaylock ungoogled-chromium sgtk-menu dolphin
-# kate dmenu grim grimshot wl-clipboard slurp mako kdeconnect gnome-keyring polkit-dumb-agent-git
+# kate dmenu grim grimshot wl-clipboard slurp mako kdeconnect gnome-keyring polkit-kde-agent
 
 # Read `man 5 sway` for a complete reference.
 

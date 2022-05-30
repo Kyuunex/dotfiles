@@ -1,14 +1,14 @@
 ### Packages required on Arch:
 # xorg-server xorg-xinit xorg-xrandr
-# terminator noto-fonts rofi xss-lock i3-wm i3blocks dolphin kate feh pavucontrol-qt
+# terminator noto-fonts rofi xss-lock i3-wm dolphin kate feh pavucontrol-qt
 # dmenu flameshot dunst kdeconnect gnome-keyring network-manager-applet blueberry
 # pulseaudio or pipewire-pulse
 ## From AUR:
-# i3lock-color ungoogled-chromium sgtk-menu polkit-dumb-agent-git qt5ct-kde
+# i3lock-color ungoogled-chromium sgtk-menu polkit-kde-agent qt5ct-kde
 
 ### Packages required on Debian:
 # xserver-xorg-core xinit x11-xserver-utils
-# terminator fonts-noto rofi xss-lock i3-wm i3blocks i3lock dolphin kate feh pavucontrol-qt qt5ct i3status
+# terminator fonts-noto rofi xss-lock i3-wm i3lock dolphin kate feh pavucontrol-qt qt5ct i3status polkit-kde-agent-1
 # suckless-tools flameshot dunst kdeconnect gnome-keyring network-manager-gnome pulseaudio gnome-bluetooth
 
 # i3 config file (v4)
@@ -274,7 +274,7 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
         position top
-        # height 20
+        # height 24
 }
 # exec --no-startup-id $HOME/.config/polybar/launch.sh
 
@@ -309,6 +309,7 @@ for_window [class="pavucontrol-qt"] floating disable
 for_window [class="mupen64plus"] floating enable
 for_window [class="rpcs3"] floating enable
 for_window [class="RPCS3"] floating enable
+for_window [class="anbox"] floating enable
 # for_window [title="Higurashi*"] floating enable
 # default_border none
 # default_floating_border none
