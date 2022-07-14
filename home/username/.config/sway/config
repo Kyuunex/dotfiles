@@ -47,7 +47,7 @@ set $file_manager dolphin
 set $text_editor kate
 
 # Bluetooth GUI
-set $bluetooth_gui blueberry
+set $bluetooth_gui blueman-manager
 
 # Audio GUI
 set $audio_gui pavucontrol-qt
@@ -320,6 +320,7 @@ for_window [title="Copying — Dolphin"] floating enable
 
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id /usr/bin/kdeconnect-indicator
+exec --no-startup-id blueman-applet
 exec --no-startup-id mako
 # exec --no-startup-id otd
 # exec --no-startup-id /usr/bin/polkit-dumb-agent

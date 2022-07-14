@@ -1,7 +1,7 @@
 ### Packages required on Arch:
 # xorg-server xorg-xinit xorg-xrandr
 # terminator noto-fonts rofi xss-lock i3-wm dolphin kate feh pavucontrol-qt
-# dmenu flameshot dunst kdeconnect gnome-keyring network-manager-applet blueberry
+# dmenu flameshot dunst kdeconnect gnome-keyring network-manager-applet blueman
 # pulseaudio or pipewire-pulse
 ## From AUR:
 # i3lock-color ungoogled-chromium sgtk-menu polkit-kde-agent qt5ct-kde
@@ -9,7 +9,7 @@
 ### Packages required on Debian:
 # xserver-xorg-core xinit x11-xserver-utils
 # terminator fonts-noto rofi xss-lock i3-wm i3lock dolphin kate feh pavucontrol-qt qt5ct i3status polkit-kde-agent-1
-# suckless-tools flameshot dunst kdeconnect gnome-keyring network-manager-gnome pulseaudio gnome-bluetooth
+# suckless-tools flameshot dunst kdeconnect gnome-keyring network-manager-gnome pulseaudio blueman
 
 # i3 config file (v4)
 #
@@ -34,7 +34,7 @@ set $file_manager dolphin
 set $text_editor kate
 
 # Bluetooth GUI
-set $bluetooth_gui blueberry
+set $bluetooth_gui blueman-manager
 
 # Audio GUI
 set $audio_gui pavucontrol-qt
@@ -319,6 +319,7 @@ for_window [class="anbox"] floating enable
 
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id /usr/bin/kdeconnect-indicator
+exec --no-startup-id blueman-applet
 exec --no-startup-id dunst
 exec --no-startup-id flameshot
 # exec --no-startup-id otd
