@@ -49,7 +49,7 @@ cpu_usage {
 
 cpu_temperature 0 {
         format = "T: %degrees °C"
-        path = "/sys/class/hwmon/hwmon1/temp1_input"
+        path = "/sys/class/hwmon/hwmon2/temp1_input"
 }
 
 memory {

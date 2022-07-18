@@ -319,7 +319,7 @@ for_window [class="anbox"] floating enable
 
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id /usr/bin/kdeconnect-indicator
-exec --no-startup-id blueman-applet
+# exec --no-startup-id blueman-applet
 exec --no-startup-id dunst
 exec --no-startup-id flameshot
 # exec --no-startup-id otd
