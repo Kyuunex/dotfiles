@@ -2,6 +2,7 @@
 # xorg-server xorg-xinit xorg-xrandr
 # terminator noto-fonts rofi xss-lock i3-wm dolphin kate feh pavucontrol-qt
 # dmenu flameshot dunst kdeconnect gnome-keyring network-manager-applet blueman
+# brightnessctl
 # pulseaudio or pipewire-pulse
 ## From AUR:
 # i3lock-color ungoogled-chromium sgtk-menu polkit-kde-agent qt5ct-kde
@@ -310,6 +311,8 @@ for_window [class="mupen64plus"] floating enable
 for_window [class="rpcs3"] floating enable
 for_window [class="RPCS3"] floating enable
 for_window [class="anbox"] floating enable
+for_window [class="gst-play-1.0"] floating enable
+for_window [class="GStreamer"] floating enable
 # for_window [title="Higurashi*"] floating enable
 # default_border none
 # default_floating_border none
