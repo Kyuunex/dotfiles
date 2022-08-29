@@ -1,25 +1,28 @@
 #!/bin/bash
 export INSTALL_LOCATION="$HOME/.local/share/WinAuth"
-
-mkdir -p "$HOME/.local/share/wineprefixes/"
-
 export WINEPREFIX="$HOME/.local/share/wineprefixes/winauth/"
-#export WINEARCH=win32 
+
+# mkdir -p "$WINEPREFIX"
+# export WINEARCH=win32 
 
 if [ ! -f "$HOME/.local/share/applications/winauth.desktop" ]
 then
-    mkdir -p "$HOME/.local/share/icons/"
     mkdir -p "$HOME/.local/share/applications/"
+    {
+        echo "[Desktop Entry]"
+        echo "Type=Application"
+        echo "Name=WinAuth"
+        echo "Icon=winauth"
+        echo "Exec=winauth %U"
+        echo "Categories=Utility;Security;"
+        echo "StartupWMClass=WinAuth.exe"
+    } > "$HOME/.local/share/applications/winauth.desktop"
+fi
 
+if [ ! -f "$HOME/.local/share/icons/winauth.png" ]
+then
+    mkdir -p "$HOME/.local/share/icons/"
     wget -O "$HOME/.local/share/icons/winauth.png" "https://raw.githubusercontent.com/winauth/winauth/master/WinAuth/Resources/WinAuthIcon.png"
-    
-    echo "[Desktop Entry]
-          Type=Application
-          Name=WinAuth
-          Icon=winauth.png
-          Exec=winauth %U
-          Categories=Utility;Security;
-          StartupWMClass=WinAuth.exe" > "$HOME/.local/share/applications/winauth.desktop"
 fi
 
 if [ ! -d "$INSTALL_LOCATION" ]
