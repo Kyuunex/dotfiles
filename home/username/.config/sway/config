@@ -85,10 +85,7 @@ xwayland enable
 
 set $idle_cmdline swaylock -f -c 000000 -i "$HOME/.config/lockscreen-image" -s fill
 
-exec swayidle -w \
-          timeout 300 $idle_cmdline \
-          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-          before-sleep $idle_cmdline
+# exec swayidle -w timeout 300 $idle_cmdline timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep $idle_cmdline
 
 bindsym $mod+l exec $idle_cmdline
 
