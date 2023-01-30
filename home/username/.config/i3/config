@@ -2,10 +2,10 @@
 # xorg-server xorg-xinit xorg-xrandr
 # terminator noto-fonts rofi xss-lock i3-wm dolphin kate feh pavucontrol-qt
 # dmenu flameshot dunst kdeconnect gnome-keyring network-manager-applet blueman
-# brightnessctl
+# brightnessctl polkit-kde-agent
 # pulseaudio or pipewire-pulse
 ## From AUR:
-# i3lock-color ungoogled-chromium sgtk-menu polkit-kde-agent qt5ct-kde
+# i3lock-color qt5ct-kde ungoogled-chromium sgtk-menu
 
 ### Packages required on Debian:
 # xserver-xorg-core xinit x11-xserver-utils
@@ -41,7 +41,7 @@ set $bluetooth_gui blueman-manager
 set $audio_gui pavucontrol-qt
 
 # Primary IM software
-set $im discord
+set $im discord --enable-gpu-rasterization --enable-zero-copy --enable-gpu-compositing --enable-native-gpu-memory-buffers --enable-oop-rasterization --enable-features=UseSkiaRenderer
 
 # Menu
 set $menu "rofi -modi window,drun,ssh,combi,run -show drun -theme arthur -combi-modi window,drun,ssh -show-icons -font 'Noto Sans 16'"
@@ -62,13 +62,23 @@ font pango:Noto Sans 9
 # font pango:DejaVu Sans Mono 8
 
 # Colours
+# PINK THEME
 # class                 border  backgr. text    indicator child_border
-client.focused          #498099 #498099 #000000 #498099   #498099
+client.focused          #FF6188 #FF6188 #000000 #FF6188   #FF6188
 client.focused_inactive #393c41 #43464B #FFFFFF #43464B   #393c41
 client.unfocused        #393c41 #43464B #FFFFFF #43464B   #393c41
-client.urgent           #FF6188 #FF6188 #000000 #FF6188   #FF6188
+client.urgent           #662636 #662636 #000000 #662636   #662636
 client.placeholder      #3465A4 #3465A4 #000000 #3465A4   #3465A4
 client.background       #2D2A2E
+
+# BLUE THEME
+# class                 border  backgr. text    indicator child_border
+# client.focused          #498099 #498099 #000000 #498099   #498099
+# client.focused_inactive #393c41 #43464B #FFFFFF #43464B   #393c41
+# client.unfocused        #393c41 #43464B #FFFFFF #43464B   #393c41
+# client.urgent           #FF6188 #FF6188 #000000 #FF6188   #FF6188
+# client.placeholder      #3465A4 #3465A4 #000000 #3465A4   #3465A4
+# client.background       #2D2A2E
 
 # Wallpaper
 # exec --no-startup-id feh --no-fehbg --bg-fill "$HOME/.config/wallpaper-image"
@@ -129,9 +139,9 @@ bindsym $mod+z exec --no-startup-id $run
 bindsym Print exec flameshot gui -p "$HOME/Pictures/Screenshots"
 bindsym $mod+Print exec flameshot screen -c -p "$HOME/Pictures/Screenshots"
 
-# bindsym --whole-window --border $mod+button4 exec --no-startup-id xdotool key --clearmodifiers g
-# bindsym --whole-window --border $mod+button5 exec --no-startup-id xdotool key --clearmodifiers h
-
+### Typing
+# bindsym --whole-window button4 exec --no-startup-id xdotool key --clearmodifiers space
+# bindsym --whole-window button5 exec --no-startup-id xdotool key --clearmodifiers space
 
 ### Window management Keybinds
 
@@ -300,6 +310,8 @@ for_window [class="Virt-manager"] border pixel 2
 for_window [class=".*.exe"] floating enable
 for_window [class="mpv"] floating enable
 for_window [class="onscripter-ru.*"] floating enable
+for_window [class="Umineko1to4"] floating enable
+for_window [class="Umineko5to8"] floating enable
 for_window [class="spine"] floating enable
 for_window [class="steam_app_.*"] floating enable
 for_window [class="steam_proton"] floating enable
@@ -321,9 +333,10 @@ for_window [class="GStreamer"] floating enable
 ### Services
 
 exec --no-startup-id /usr/lib/kdeconnectd
-exec --no-startup-id /usr/bin/kdeconnect-indicator
+exec --no-startup-id kdeconnect-indicator
 # exec --no-startup-id blueman-applet
 exec --no-startup-id dunst
+exec --no-startup-id snixembed
 # exec --no-startup-id flameshot
 # exec --no-startup-id otd
 # exec --no-startup-id /usr/bin/polkit-dumb-agent
@@ -336,5 +349,6 @@ exec --no-startup-id export SSH_AUTH_SOCK
 
 
 # exec --no-startup-id secret_script_1
-exec --no-startup-id /usr/local/bin/electron-mail
+exec --no-startup-id electron-mail
+exec --no-startup-id signal-desktop --use-tray-icon
 # exec --no-startup-id slack -u
