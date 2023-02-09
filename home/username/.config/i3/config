@@ -65,8 +65,8 @@ font pango:Noto Sans 9
 # PINK THEME
 # class                 border  backgr. text    indicator child_border
 client.focused          #FF6188 #FF6188 #000000 #FF6188   #FF6188
-client.focused_inactive #393c41 #43464B #FFFFFF #43464B   #393c41
-client.unfocused        #393c41 #43464B #FFFFFF #43464B   #393c41
+client.focused_inactive #393C41 #43464B #FFFFFF #43464B   #393C41
+client.unfocused        #393C41 #43464B #FFFFFF #43464B   #393C41
 client.urgent           #662636 #662636 #000000 #662636   #662636
 client.placeholder      #3465A4 #3465A4 #000000 #3465A4   #3465A4
 client.background       #2D2A2E
@@ -74,8 +74,8 @@ client.background       #2D2A2E
 # BLUE THEME
 # class                 border  backgr. text    indicator child_border
 # client.focused          #498099 #498099 #000000 #498099   #498099
-# client.focused_inactive #393c41 #43464B #FFFFFF #43464B   #393c41
-# client.unfocused        #393c41 #43464B #FFFFFF #43464B   #393c41
+# client.focused_inactive #393C41 #43464B #FFFFFF #43464B   #393C41
+# client.unfocused        #393C41 #43464B #FFFFFF #43464B   #393C41
 # client.urgent           #FF6188 #FF6188 #000000 #FF6188   #FF6188
 # client.placeholder      #3465A4 #3465A4 #000000 #3465A4   #3465A4
 # client.background       #2D2A2E
@@ -140,6 +140,8 @@ bindsym Print exec flameshot gui -p "$HOME/Pictures/Screenshots"
 bindsym $mod+Print exec flameshot screen -c -p "$HOME/Pictures/Screenshots"
 
 ### Typing
+bindsym --whole-window $mod+0x2c exec --no-startup-id xdotool key --clearmodifiers U2022
+
 # bindsym --whole-window button4 exec --no-startup-id xdotool key --clearmodifiers space
 # bindsym --whole-window button5 exec --no-startup-id xdotool key --clearmodifiers space
 
@@ -332,21 +334,30 @@ for_window [class="GStreamer"] floating enable
 
 ### Services
 
+# KDE connect
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id kdeconnect-indicator
+
+# Bluetooth
 # exec --no-startup-id blueman-applet
+
+# Notifications
 exec --no-startup-id dunst
-exec --no-startup-id snixembed
-# exec --no-startup-id flameshot
-# exec --no-startup-id otd
+
+# polkit
 # exec --no-startup-id /usr/bin/polkit-dumb-agent
 exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 
+# Keyrings
 exec --no-startup-id eval $(gnome-keyring-daemon --start)
 exec --no-startup-id export SSH_AUTH_SOCK
-
 # exec --no-startup-id /usr/lib/pam_kwallet_init
 
+# Other
+exec --no-startup-id snixembed
+# exec --no-startup-id flameshot
+
+### Application startup
 
 # exec --no-startup-id secret_script_1
 exec --no-startup-id electron-mail

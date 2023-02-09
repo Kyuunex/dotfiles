@@ -11,13 +11,23 @@
 font pango:"Noto Sans" Regular 9
 
 # Colours
+# PINK THEME
 # class                 border  backgr. text    indicator child_border
-client.focused          #498099 #498099 #000000 #498099   #498099
-client.focused_inactive #393c41 #43464B #FFFFFF #43464B   #393c41
-client.unfocused        #393c41 #43464B #FFFFFF #43464B   #393c41
-client.urgent           #FF6188 #FF6188 #000000 #FF6188   #FF6188
+client.focused          #FF6188 #FF6188 #000000 #FF6188   #FF6188
+client.focused_inactive #393C41 #43464B #FFFFFF #43464B   #393C41
+client.unfocused        #393C41 #43464B #FFFFFF #43464B   #393C41
+client.urgent           #662636 #662636 #000000 #662636   #662636
 client.placeholder      #3465A4 #3465A4 #000000 #3465A4   #3465A4
 client.background       #2D2A2E
+
+# BLUE THEME
+# class                 border  backgr. text    indicator child_border
+# client.focused          #498099 #498099 #000000 #498099   #498099
+# client.focused_inactive #393C41 #43464B #FFFFFF #43464B   #393C41
+# client.unfocused        #393C41 #43464B #FFFFFF #43464B   #393C41
+# client.urgent           #FF6188 #FF6188 #000000 #FF6188   #FF6188
+# client.placeholder      #3465A4 #3465A4 #000000 #3465A4   #3465A4
+# client.background       #2D2A2E
 
 # Wallpaper
 output * bg "$HOME/.config/wallpaper-image" fill
@@ -293,8 +303,7 @@ bar {
 # for_window [class="^([^o].*|o[^s].*|os[^u].*|osu[^!].*|osu!.+)\.exe$"] floating enable
 for_window [title="Copying — Dolphin"] floating enable
 for_window [class="firefox"] border pixel 2
-for_window [class="chromium"] border pixel 2
-for_window [class="Chromium"] border pixel 2
+for_window [app_id="chromium"] border pixel 2
 for_window [class="brave-browser"] border pixel 2
 for_window [class="Brave-browser"] border pixel 2
 for_window [class="vmware"] border pixel 2
@@ -302,7 +311,7 @@ for_window [class="Vmware"] border pixel 2
 for_window [class="virt-manager"] border pixel 2
 for_window [class="Virt-manager"] border pixel 2
 for_window [class=".*.exe"] floating enable
-for_window [class="mpv"] floating enable
+for_window [app_id="mpv"] floating enable
 for_window [class="onscripter-ru.*"] floating enable
 for_window [class="spine"] floating enable
 for_window [class="steam_app_.*"] floating enable
@@ -321,21 +330,30 @@ for_window [class="GStreamer"] floating enable
 # default_border none
 # default_floating_border none
 
+
 ### Services
 
+# KDE connect
 exec --no-startup-id /usr/lib/kdeconnectd
-exec --no-startup-id /usr/bin/kdeconnect-indicator
+exec --no-startup-id kdeconnect-indicator
+
+# Bluetooth
 # exec --no-startup-id blueman-applet
+
+# Notifications
 exec --no-startup-id mako
-# exec --no-startup-id otd
+
+# polkit
 # exec --no-startup-id /usr/bin/polkit-dumb-agent
 exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 
-exec eval $(gnome-keyring-daemon --start)
-exec export SSH_AUTH_SOCK
-
+# Keyrings
+exec --no-startup-id eval $(gnome-keyring-daemon --start)
+exec --no-startup-id export SSH_AUTH_SOCK
 # exec --no-startup-id /usr/lib/pam_kwallet_init
 
+
+### Application startup
 
 # exec --no-startup-id secret_script_1
 
