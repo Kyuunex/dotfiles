@@ -147,7 +147,7 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol-qt"
     },
     "custom/media": {
         "format": "{icon} {}",
@@ -167,10 +167,10 @@
     },
     "custom/bluetooth": {
         "format": "",
-        "on-click": "blueberry"
+        "on-click": "blueman-manager"
     },
     "custom/window-close": {
-        "format": "",
+        "format": "",
         "on-click": "swaymsg kill"
     },
     "custom/adaptive-sync": {
