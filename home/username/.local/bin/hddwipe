@@ -1,11 +1,10 @@
 #!/bin/sh
 
-echo "This script is meant to securely wipe a drive."
+echo "This script is meant to securely wipe a hard disk drive (HDD)."
 echo "Useful if you want to sell or a donate a drive"
 echo "and don't want your data recovered"
 
-export DISKTOWIPE="$@"
-export LANG=C
+DISKTOWIPE="$@"
 
 echo "You are attempting to wipe $DISKTOWIPE"
 
@@ -13,31 +12,22 @@ echo "======================================="
 fdisk -x $DISKTOWIPE
 echo "======================================="
 
-echo "There is no further confirmation"
-echo "You have 15 seconds to change your mind"
-
-sleep 15
+printf "%s " "Press ENTER to start or CTRL+C to cancel"
+read ans
 
 echo "======================================="
 
-echo "Pass 1/6 started"
-dd if=/dev/zero of=$DISKTOWIPE bs=128k status=progress
+echo "Pass 1/4 started"
+dd if=/dev/urandom of=$DISKTOWIPE bs=128k status=progress
 
-echo "Pass 2/6 started"
-# tr '\0' '\377' < /dev/zero | dd of=$DISKTOWIPE bs=128k status=progress
-dd if=/dev/random of=$DISKTOWIPE bs=128k status=progress
+echo "Pass 2/4 started"
+dd if=/dev/urandom of=$DISKTOWIPE bs=128k status=progress
 
-echo "Pass 3/6 started"
-dd if=/dev/random of=$DISKTOWIPE bs=128k status=progress
+echo "Pass 3/4 started"
+dd if=/dev/urandom of=$DISKTOWIPE bs=128k status=progress
 
-echo "Pass 4/6 started"
-dd if=/dev/random of=$DISKTOWIPE bs=128k status=progress
-
-echo "Pass 5/6 started"
-dd if=/dev/random of=$DISKTOWIPE bs=128k status=progress
-
-echo "Pass 6/6 started"
-dd if=/dev/zero of=$DISKTOWIPE bs=128k status=progress
+echo "Pass 4/4 started"
+dd if=/dev/urandom of=$DISKTOWIPE bs=128k status=progress
 
 
 echo "ALL DONE"
