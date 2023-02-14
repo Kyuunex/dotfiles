@@ -113,6 +113,7 @@ bindsym $mod+z exec $run
 # Screenshots
 bindsym Print exec grimshot save area
 bindsym $mod+Print exec grimshot save window
+bindsym $mod+Shift+Print exec grimshot save output
 
 ### Window management Keybinds
 include window_management
