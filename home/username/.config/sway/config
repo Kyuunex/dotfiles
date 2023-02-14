@@ -1,44 +1,21 @@
-### Packages required:
-# alacritty noto-fonts wofi xorg-xwayland swayidle swaylock ungoogled-chromium dolphin
-# kate dmenu grim grimshot wl-clipboard slurp mako kdeconnect gnome-keyring polkit-kde-agent
+### Packages required on Arch:
+# alacritty noto-fonts wofi xorg-xwayland swayidle swaylock dolphin blueman
+# kate dmenu grim wl-clipboard slurp mako kdeconnect gnome-keyring polkit-kde-agent
+## From AUR:
+# ungoogled-chromium grimshot
 
 # Read `man 5 sway` for a complete reference.
 
 
 ### Appearance
-
-# Font
-font pango:"Noto Sans" Regular 9
-
-# Colours
-# PINK THEME
-# class                 border  backgr. text    indicator child_border
-client.focused          #FF6188 #FF6188 #000000 #FF6188   #FF6188
-client.focused_inactive #393C41 #43464B #FFFFFF #43464B   #393C41
-client.unfocused        #393C41 #43464B #FFFFFF #43464B   #393C41
-client.urgent           #662636 #662636 #000000 #662636   #662636
-client.placeholder      #3465A4 #3465A4 #000000 #3465A4   #3465A4
-client.background       #2D2A2E
-
-# BLUE THEME
-# class                 border  backgr. text    indicator child_border
-# client.focused          #498099 #498099 #000000 #498099   #498099
-# client.focused_inactive #393C41 #43464B #FFFFFF #43464B   #393C41
-# client.unfocused        #393C41 #43464B #FFFFFF #43464B   #393C41
-# client.urgent           #FF6188 #FF6188 #000000 #FF6188   #FF6188
-# client.placeholder      #3465A4 #3465A4 #000000 #3465A4   #3465A4
-# client.background       #2D2A2E
-
-# Wallpaper
-output * bg "$HOME/.config/wallpaper-image" fill
-
+include themes/bochi
 
 ### Variables
 
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 
-# Home row direction keys, like vim
+# Home row direction keys
 set $left Left
 set $down Down
 set $up Up
@@ -73,19 +50,8 @@ set $menu "wofi --show drun --allow-images -w 4 -W 60% -H 60%"
 set $run "wofi --show run"
 
 ### Output configuration
+include monitors
 
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
-# Normally I would use these but negative coords don't register input in xwayland apps
-# output DP-1 pos 0 0 res 1920x1080@143.850Hz
-# output HDMI-A-1 pos -1920 0 res 1920x1080@60.000Hz
-
-output DP-1 pos 1920 0 res 1920x1080@143.850Hz
-output HDMI-A-1 pos 0 0 res 1920x1080@60.000Hz
-
-# I normally keep this off because my particular screen flickers on low refresh rate,
-# and manually turn it on when I need it.
-output DP-1 adaptive_sync off
 
 # Don't forget xwayland
 xwayland enable
@@ -108,11 +74,7 @@ bindsym $mod+l exec $idle_cmdline
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
-
-input "type:keyboard" {
-    xkb_layout us,ge
-    xkb_options grp:win_space_toggle
-}
+include kb_layouts
 
 # Mouse acceleration is retarded why is it always on by default?
 input * accel_profile flat
@@ -152,137 +114,8 @@ bindsym $mod+z exec $run
 bindsym Print exec grimshot save area
 bindsym $mod+Print exec grimshot save window
 
-
 ### Window management Keybinds
-
-floating_modifier $mod normal
-
-# Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+e exec swaynag -t warning -m 'End sway session?' -b 'Yes' 'swaymsg exit'
-
-# Reload the configuration file
-bindsym $mod+Shift+c reload
-
-# Kill focused window
-bindsym $mod+Shift+q kill
-
-
-# Moving around:
-
-# Move your focus around
-#bindsym $mod+$left focus left
-#bindsym $mod+$down focus down
-#bindsym $mod+$up focus up
-#bindsym $mod+$right focus right
-
-# Or use $mod+[up|down|left|right]
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
-# Move the focused window with the same, but add Shift
-#bindsym $mod+Shift+$left move left
-#bindsym $mod+Shift+$down move down
-#bindsym $mod+Shift+$up move up
-#bindsym $mod+Shift+$right move right
-
-# Ditto, with arrow keys
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# Workspaces:
-
-# Switch to workspace
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
-bindsym $mod+6 workspace number 6
-bindsym $mod+7 workspace number 7
-bindsym $mod+8 workspace number 8
-bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
-
-# Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
-bindsym $mod+Shift+6 move container to workspace number 6
-bindsym $mod+Shift+7 move container to workspace number 7
-bindsym $mod+Shift+8 move container to workspace number 8
-bindsym $mod+Shift+9 move container to workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 10
-# Note: workspaces can have any name you want, not just numbers.
-# We just use 1-10 as the default.
-
-# Layout stuff:
-#
-# You can "split" the current object of your focus with
-# $mod+b or $mod+v, for horizontal and vertical splits
-# respectively.
-
-bindsym $mod+q split toggle
-bindsym $mod+h splith
-bindsym $mod+v splitv
-
-# Switch the current container between different layout styles
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-# Make the current focus fullscreen
-bindsym $mod+f fullscreen
-
-# Toggle the current focus between tiling and floating mode
-bindsym $mod+Shift+space floating toggle
-
-# Swap focus between the tiling area and the floating area
-bindsym $mod+space focus mode_toggle
-
-# Move focus to the parent container
-bindsym $mod+a focus parent
-#
-# Scratchpad:
-#
-# Sway has a "scratchpad", which is a bag of holding for windows.
-# You can send windows there and get them back later.
-
-# Move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
-
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-# bindsym $mod+minus scratchpad show
-#
-# Resizing containers:
-#
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    #bindsym $left resize shrink width 10px
-    #bindsym $down resize grow height 10px
-    #bindsym $up resize shrink height 10px
-    #bindsym $right resize grow width 10px
-
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
+include window_management
 
 #
 # Status Bar:
@@ -293,71 +126,13 @@ bar {
 }
 
 ### Window specific overrides
-# to get window classes for xwayland apps, run: xprop | grep -i 'class'
-
-# for_window [class=".*"] border pixel 2
-# for_window [class="osu!.exe"] floating enable, border none
-# for_window [class="osu!"] floating disable, border none
-# for_window [class="explorer.exe"] floating disable, border none
-# for_window [class="^([^o].*|o[^s].*|os[^u].*|osu[^!].*|osu!.+)\.exe$"] floating enable
-for_window [title="Copying — Dolphin"] floating enable
-for_window [title="Moving * Dolphin"] floating enable
-for_window [app_id="firefox"] border pixel 2
-for_window [app_id="chromium"] border pixel 2
-for_window [class="brave-browser"] border pixel 2
-for_window [class="Brave-browser"] border pixel 2
-for_window [class="vmware"] border pixel 2
-for_window [class="Vmware"] border pixel 2
-for_window [app_id="virt-manager"] border pixel 2
-for_window [class=".*.exe"] floating enable
-for_window [app_id=".*.exe"] floating enable
-for_window [app_id="mpv"] floating enable
-for_window [class="onscripter-ru.*"] floating enable
-for_window [class="spine"] floating enable
-for_window [class="steam_app_.*"] floating enable
-for_window [class="steam_proton"] floating enable
-for_window [app_id="spek"] floating enable
-for_window [app_id="org.kde.gwenview"] floating enable
-for_window [app_id="pavucontrol-qt"] floating disable
-for_window [class="mupen64plus"] floating enable
-for_window [class="rpcs3"] floating enable
-for_window [class="RPCS3"] floating enable
-for_window [class="anbox"] floating enable
-for_window [class="gst-play-1.0"] floating enable
-for_window [class="GStreamer"] floating enable
-for_window [app_id="org.kde.polkit-kde-authentication-agent-1"] floating enable
-# for_window [title="Higurashi*"] floating enable
-# default_border none
-# default_floating_border none
-
+include window_overrides
 
 ### Services
-
-# KDE connect
-exec --no-startup-id /usr/lib/kdeconnectd
-exec --no-startup-id kdeconnect-indicator
-
-# Bluetooth
-exec --no-startup-id blueman-applet
-
-# Notifications
-exec --no-startup-id mako
-
-# polkit
-# exec --no-startup-id /usr/bin/polkit-dumb-agent
-exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
-
-# Keyrings
-exec --no-startup-id eval $(gnome-keyring-daemon --start)
-exec --no-startup-id export SSH_AUTH_SOCK
-# exec --no-startup-id /usr/lib/pam_kwallet_init
-
+include services
 
 ### Application startup
+include startup/*
 
-# exec --no-startup-id secret_script_1
-exec --no-startup-id electron-mail
-exec --no-startup-id signal-desktop --use-tray-icon
-# exec --no-startup-id slack -u
 
 include /etc/sway/config.d/*

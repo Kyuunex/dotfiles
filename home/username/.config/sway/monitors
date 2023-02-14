@@ -1,0 +1,15 @@
+### Output configuration
+
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+# Normally I would use these but negative coords don't register input in xwayland apps
+# output DP-1 pos 0 0 res 1920x1080@143.850Hz
+# output HDMI-A-1 pos -1920 0 res 1920x1080@60.000Hz
+
+output DP-1 pos 1920 0 res 1920x1080@143.850Hz
+output HDMI-A-1 pos 0 0 res 1920x1080@60.000Hz
+
+# I normally keep this off because my particular screen flickers on low refresh rate,
+# and manually turn it on when I need it.
+output DP-1 adaptive_sync off
+
