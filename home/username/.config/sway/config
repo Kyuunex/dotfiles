@@ -1,5 +1,5 @@
 ### Packages required:
-# terminator noto-fonts wofi xorg-xwayland swayidle swaylock ungoogled-chromium sgtk-menu dolphin
+# alacritty noto-fonts wofi xorg-xwayland swayidle swaylock ungoogled-chromium dolphin
 # kate dmenu grim grimshot wl-clipboard slurp mako kdeconnect gnome-keyring polkit-kde-agent
 
 # Read `man 5 sway` for a complete reference.
@@ -45,7 +45,7 @@ set $up Up
 set $right Right
 
 # Terminal emulator
-set $term terminator
+set $term alacritty
 
 # Browser
 set $browser chromium
@@ -63,13 +63,13 @@ set $bluetooth_gui blueman-manager
 set $audio_gui pavucontrol-qt
 
 # Primary IM software
-set $im discord
+set $im discord-canary
 
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu "wofi --show drun --allow-images"
+set $menu "wofi --show drun --allow-images -w 4 -W 60% -H 60%"
 set $run "wofi --show run"
 
 ### Output configuration
@@ -144,7 +144,6 @@ bindsym $mod+i exec $file_manager
 bindsym $mod+k exec $text_editor
 bindsym $mod+o exec $bluetooth_gui
 bindsym $mod+p exec $audio_gui
-bindsym $mod+u exec sgtk-menu
 bindsym $mod+t exec $term -e htop
 bindsym $mod+y exec $im
 bindsym $mod+z exec $run
@@ -302,30 +301,31 @@ bar {
 # for_window [class="explorer.exe"] floating disable, border none
 # for_window [class="^([^o].*|o[^s].*|os[^u].*|osu[^!].*|osu!.+)\.exe$"] floating enable
 for_window [title="Copying — Dolphin"] floating enable
-for_window [class="firefox"] border pixel 2
+for_window [title="Moving * Dolphin"] floating enable
+for_window [app_id="firefox"] border pixel 2
 for_window [app_id="chromium"] border pixel 2
 for_window [class="brave-browser"] border pixel 2
 for_window [class="Brave-browser"] border pixel 2
 for_window [class="vmware"] border pixel 2
 for_window [class="Vmware"] border pixel 2
-for_window [class="virt-manager"] border pixel 2
-for_window [class="Virt-manager"] border pixel 2
+for_window [app_id="virt-manager"] border pixel 2
 for_window [class=".*.exe"] floating enable
+for_window [app_id=".*.exe"] floating enable
 for_window [app_id="mpv"] floating enable
 for_window [class="onscripter-ru.*"] floating enable
 for_window [class="spine"] floating enable
 for_window [class="steam_app_.*"] floating enable
 for_window [class="steam_proton"] floating enable
-for_window [class="spek"] floating enable
-for_window [class="Spek"] floating enable
-for_window [class="gwenview"] floating enable
-for_window [class="pavucontrol-qt"] floating disable
+for_window [app_id="spek"] floating enable
+for_window [app_id="org.kde.gwenview"] floating enable
+for_window [app_id="pavucontrol-qt"] floating disable
 for_window [class="mupen64plus"] floating enable
 for_window [class="rpcs3"] floating enable
 for_window [class="RPCS3"] floating enable
 for_window [class="anbox"] floating enable
 for_window [class="gst-play-1.0"] floating enable
 for_window [class="GStreamer"] floating enable
+for_window [app_id="org.kde.polkit-kde-authentication-agent-1"] floating enable
 # for_window [title="Higurashi*"] floating enable
 # default_border none
 # default_floating_border none
@@ -338,7 +338,7 @@ exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id kdeconnect-indicator
 
 # Bluetooth
-# exec --no-startup-id blueman-applet
+exec --no-startup-id blueman-applet
 
 # Notifications
 exec --no-startup-id mako
@@ -356,6 +356,8 @@ exec --no-startup-id export SSH_AUTH_SOCK
 ### Application startup
 
 # exec --no-startup-id secret_script_1
-
+exec --no-startup-id electron-mail
+exec --no-startup-id signal-desktop --use-tray-icon
+# exec --no-startup-id slack -u
 
 include /etc/sway/config.d/*

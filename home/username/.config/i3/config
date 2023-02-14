@@ -1,15 +1,15 @@
 ### Packages required on Arch:
 # xorg-server xorg-xinit xorg-xrandr
-# terminator noto-fonts rofi xss-lock i3-wm dolphin kate feh pavucontrol-qt
+# alacritty noto-fonts rofi xss-lock i3-wm dolphin kate feh pavucontrol-qt
 # dmenu flameshot dunst kdeconnect gnome-keyring network-manager-applet blueman
 # brightnessctl polkit-kde-agent
 # pulseaudio or pipewire-pulse
 ## From AUR:
-# i3lock-color qt5ct-kde ungoogled-chromium sgtk-menu
+# i3lock-color qt5ct-kde ungoogled-chromium
 
 ### Packages required on Debian:
 # xserver-xorg-core xinit x11-xserver-utils
-# terminator fonts-noto rofi xss-lock i3-wm i3lock dolphin kate feh pavucontrol-qt qt5ct i3status polkit-kde-agent-1
+# alacritty fonts-noto rofi xss-lock i3-wm i3lock dolphin kate feh pavucontrol-qt qt5ct i3status polkit-kde-agent-1
 # suckless-tools flameshot dunst kdeconnect gnome-keyring network-manager-gnome pulseaudio blueman
 
 # i3 config file (v4)
@@ -23,7 +23,7 @@
 set $mod Mod4
 
 # Terminal
-set $term terminator
+set $term alacritty
 
 # Browser
 set $browser chromium
@@ -41,7 +41,7 @@ set $bluetooth_gui blueman-manager
 set $audio_gui pavucontrol-qt
 
 # Primary IM software
-set $im discord --enable-gpu-rasterization --enable-zero-copy --enable-gpu-compositing --enable-native-gpu-memory-buffers --enable-oop-rasterization --enable-features=UseSkiaRenderer
+set $im discord-canary
 
 # Menu
 set $menu "rofi -modi window,drun,ssh,combi,run -show drun -theme arthur -combi-modi window,drun,ssh -show-icons -font 'Noto Sans 16'"
@@ -130,7 +130,6 @@ bindsym $mod+i exec $file_manager
 bindsym $mod+k exec $text_editor
 bindsym $mod+o exec $bluetooth_gui
 bindsym $mod+p exec $audio_gui
-bindsym $mod+u exec sgtk-menu
 bindsym $mod+t exec $term -e htop
 bindsym $mod+y exec $im
 bindsym $mod+z exec --no-startup-id $run
@@ -339,7 +338,7 @@ exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id kdeconnect-indicator
 
 # Bluetooth
-# exec --no-startup-id blueman-applet
+exec --no-startup-id blueman-applet
 
 # Notifications
 exec --no-startup-id dunst
