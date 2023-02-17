@@ -1,5 +1,8 @@
 ### Services
 
+# NM applet
+exec --no-startup-id nm-applet --indicator
+
 # KDE connect
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id kdeconnect-indicator
