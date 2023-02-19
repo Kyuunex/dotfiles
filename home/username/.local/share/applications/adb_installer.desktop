@@ -1,5 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=Install .apk
+Name=Install .apk on an ADB connected smartphone
+MimeType=application/vnd.android.package-archive;
 Exec=adb install %U
 Categories=Utility;
