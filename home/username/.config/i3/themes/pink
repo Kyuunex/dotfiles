@@ -1,0 +1,21 @@
+### Appearance
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Noto Sans 9
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+# font pango:DejaVu Sans Mono 8
+
+# Colours
+# class                 border  backgr. text    indicator child_border
+client.focused          #FF6188 #FF6188 #000000 #FF6188   #FF6188
+client.focused_inactive #393C41 #43464B #FFFFFF #43464B   #393C41
+client.unfocused        #393C41 #43464B #FFFFFF #43464B   #393C41
+client.urgent           #662636 #662636 #000000 #662636   #662636
+client.placeholder      #3465A4 #3465A4 #000000 #3465A4   #3465A4
+client.background       #2D2A2E
+
+# Wallpaper
+# exec --no-startup-id feh --no-fehbg --bg-fill "$HOME/.config/wallpaper-image"
