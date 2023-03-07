@@ -45,7 +45,9 @@ set $im discord-canary
 
 # Menu
 set $menu "rofi -modi window,drun,ssh,combi,run -show drun -theme arthur -combi-modi window,drun,ssh -show-icons -font 'Noto Sans 16'"
-set $run "rofi -show run -theme arthur -show-icons -font 'Noto Sans 16'"
+# set $run "rofi -show run -theme arthur -show-icons -font 'Noto Sans 16'"
+set $run "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#E04265' -sf '#000000' -fn 'monospace-12' -p 'dmenu prompt &gt;'"
+
 
 # refresh_i3status cmdline
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -122,9 +124,20 @@ include window_management
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
-        position top
-        # height 24
+    status_command i3status
+    position top
+    # height 24
+    colors {
+        background #2D2A2E
+        statusline #C5C8C6
+        separator  #666666
+
+        focused_workspace  #E04265 #E04265 #000000
+        active_workspace   #E04265 #2D2A2E #FFFFFF
+        inactive_workspace #2D2A2E #2D2A2E #888888
+        urgent_workspace   #2F343A #662636 #FFFFFF
+        binding_mode       #2F343A #662636 #FFFFFF
+    }
 }
 # exec --no-startup-id $HOME/.config/polybar/launch.sh
 
