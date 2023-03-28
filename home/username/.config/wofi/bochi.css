@@ -6,25 +6,25 @@
 
 window {
     opacity: 0.95;
-    background-color: #3d4b61;
+    background-color: #513a4b;
 }
 
 #input {
     margin: 5px;
     border-radius: 0px;
     border: none;
-    background-color: #3d4b61;
+    background-color: #513a4b;
     color: white;
 }
 
 #inner-box {
-    background-color: #313e50;
+    background-color: #3d2d3a;
 }
 
 #outer-box {
     margin: 2px;
     padding: 10px;
-    background-color: #313e50;
+    background-color: #3d2d3a;
 }
 
 #scroll {
@@ -37,15 +37,15 @@ window {
 }
 
 #entry {
-    background-color: #1e2530;
+    background-color: #3a2c37;
 }
 
 #entry:nth-child(even){
-    background-color: #293342;
+    background-color: #493848;
 }
 
 #entry:selected {
-    background-color: #556988;
+    background-color: #E04265;
 }
 
 #text:selected {
