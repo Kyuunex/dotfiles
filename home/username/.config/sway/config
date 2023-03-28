@@ -1,8 +1,8 @@
 ### Packages required on Arch:
-# alacritty noto-fonts wofi xorg-xwayland swayidle swaylock dolphin blueman
-# kate dmenu grim wl-clipboard slurp mako kdeconnect gnome-keyring polkit-kde-agent
+# sway waybar swaybg alacritty noto-fonts wofi xorg-xwayland swayidle swaylock dolphin blueman
+# kate dmenu grim wl-clipboard slurp mako kdeconnect gnome-keyring polkit-kde-agent network-manager-applet
 ## From AUR:
-# ungoogled-chromium grimshot
+# ungoogled-chromium grimshot qt5ct-kde
 
 # Read `man 5 sway` for a complete reference.
 
