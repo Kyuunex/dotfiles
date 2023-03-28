@@ -17,6 +17,8 @@ export BROWSER="chromium"
 source /etc/profile
 
 alias ls='ls --color=auto'
+alias unzipj='unzip -O shift-jis'
+alias unzipj2='unzip -O cp932'
 PS1="[\W]\$ "
 
 if [ -d "$HOME/.local/bin" ] ; then
