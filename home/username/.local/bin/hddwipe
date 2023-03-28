@@ -5,6 +5,8 @@ echo "Useful if you want to sell or a donate a drive"
 echo "and don't want your data recovered"
 
 DISKTOWIPE="$@"
+BS=8M
+SOURCE=/dev/urandom
 
 echo "You are attempting to wipe $DISKTOWIPE"
 
@@ -17,17 +19,10 @@ read ans
 
 echo "======================================="
 
-echo "Pass 1/4 started"
-dd if=/dev/urandom of=$DISKTOWIPE bs=128k status=progress
-
-echo "Pass 2/4 started"
-dd if=/dev/urandom of=$DISKTOWIPE bs=128k status=progress
-
-echo "Pass 3/4 started"
-dd if=/dev/urandom of=$DISKTOWIPE bs=128k status=progress
-
-echo "Pass 4/4 started"
-dd if=/dev/urandom of=$DISKTOWIPE bs=128k status=progress
-
+for pass in 1 2 3 4
+do
+    echo "Pass $pass started"
+    dd if=$SOURCE of=$DISKTOWIPE bs=$BS status=progress
+done
 
 echo "ALL DONE"
