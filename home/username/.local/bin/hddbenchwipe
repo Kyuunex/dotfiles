@@ -1,0 +1,88 @@
+#!/bin/sh
+
+echo "This script is meant to benchmark a drive to choose an appropriate BS"
+echo "All data from this drive will be wiped!"
+
+DISKTOWIPE="$@"
+
+echo "You are attempting to wipe $DISKTOWIPE"
+
+echo "======================================="
+fdisk -x $DISKTOWIPE
+echo "======================================="
+
+printf "%s " "Press ENTER to start or CTRL+C to cancel"
+read ans
+
+echo "======================================="
+
+echo "2048M"
+dd if=/dev/urandom of=$DISKTOWIPE bs=2048M count=5
+
+echo "1024M"
+dd if=/dev/urandom of=$DISKTOWIPE bs=1024M count=10
+
+echo "512M"
+dd if=/dev/urandom of=$DISKTOWIPE bs=512M count=20
+
+echo "256M"
+dd if=/dev/urandom of=$DISKTOWIPE bs=256M count=40
+
+echo "128M"
+dd if=/dev/urandom of=$DISKTOWIPE bs=128M count=80
+
+echo "64M"
+dd if=/dev/urandom of=$DISKTOWIPE bs=64M count=160
+
+echo "32M"
+dd if=/dev/urandom of=$DISKTOWIPE bs=32M count=320
+
+echo "16M"
+dd if=/dev/urandom of=$DISKTOWIPE bs=16M count=640
+
+echo "8M"
+dd if=/dev/urandom of=$DISKTOWIPE bs=8M count=1280
+
+echo "4M"
+dd if=/dev/urandom of=$DISKTOWIPE bs=4M count=2560
+
+echo "2M"
+dd if=/dev/urandom of=$DISKTOWIPE bs=2M count=5120
+
+echo "1M"
+dd if=/dev/urandom of=$DISKTOWIPE bs=1M count=10240
+
+echo "512K"
+dd if=/dev/urandom of=$DISKTOWIPE bs=512K count=20480
+
+echo "256K"
+dd if=/dev/urandom of=$DISKTOWIPE bs=256K count=40960
+
+echo "128K"
+dd if=/dev/urandom of=$DISKTOWIPE bs=128K count=81920
+
+echo "64K"
+dd if=/dev/urandom of=$DISKTOWIPE bs=64K count=163840
+
+echo "32K"
+dd if=/dev/urandom of=$DISKTOWIPE bs=32K count=327680
+
+echo "16K"
+dd if=/dev/urandom of=$DISKTOWIPE bs=16K count=655360
+
+echo "8K"
+dd if=/dev/urandom of=$DISKTOWIPE bs=8K count=1310720
+
+echo "4K"
+dd if=/dev/urandom of=$DISKTOWIPE bs=4K count=2621440
+
+echo "2K"
+dd if=/dev/urandom of=$DISKTOWIPE bs=2K count=5242880
+
+echo "1K"
+dd if=/dev/urandom of=$DISKTOWIPE bs=1K count=10485760
+
+echo "512"
+dd if=/dev/urandom of=$DISKTOWIPE bs=512 count=20971520
+
+echo "ALL DONE"
