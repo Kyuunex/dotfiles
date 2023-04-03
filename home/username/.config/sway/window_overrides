@@ -7,8 +7,9 @@
 # for_window [class="osu!"] floating disable, border none
 # for_window [class="explorer.exe"] floating disable, border none
 # for_window [class="^([^o].*|o[^s].*|os[^u].*|osu[^!].*|osu!.+)\.exe$"] floating enable
-for_window [title="Copying — Dolphin"] floating enable
-for_window [title="Moving * Dolphin"] floating enable
+for_window [title="Copying .*. Dolphin"] floating enable
+for_window [title="Moving .*. Dolphin"] floating enable
+for_window [title="Extracting Files .*. Dolphin"] floating enable
 for_window [app_id="firefox"] border pixel 2
 for_window [app_id="chromium"] border pixel 2
 for_window [class="brave-browser"] border pixel 2
