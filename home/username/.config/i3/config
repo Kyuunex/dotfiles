@@ -54,7 +54,7 @@ set $refresh_i3status killall -SIGUSR1 i3status
 
 
 ### Appearance
-include themes/bochi
+include themes/9-nine
 
 ### Idle and Lockscreen configuration
 
