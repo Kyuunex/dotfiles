@@ -1,2 +1,3 @@
 #!/bin/sh
-echo "exec xinit \"$@\" -- :1 vt6" > /home/$HOME/.local/bin/vt6s
+echo -e "#!/bin/sh\nexec xinit \"$@\" -- :1 vt6" > $HOME/.local/bin/vt6s
+chmod +x $HOME/.local/bin/vt6s
