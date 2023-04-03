@@ -1,7 +1,7 @@
 ### Packages required on Arch:
 # xorg-server xorg-xinit xorg-xrandr
-# alacritty noto-fonts rofi xss-lock i3-wm dolphin kate feh pavucontrol-qt
-# dmenu flameshot dunst kdeconnect gnome-keyring network-manager-applet blueman
+# alacritty noto-fonts rofi xss-lock i3-wm i3status dolphin kate feh pavucontrol-qt
+# dmenu flameshot dunst kdeconnect gnome-keyring network-manager-applet blueman picom
 # brightnessctl polkit-kde-agent
 # pulseaudio or pipewire-pulse
 ## From AUR:
