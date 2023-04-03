@@ -1,0 +1,19 @@
+#!/bin/bash
+UUID= # LUKS PARTITION UUID
+NAME= # NAME IT WHAT YOU WANT
+
+echo "$NAME"
+
+echo "unlocking partition"
+# udisksctl unlock -b /dev/disk/by-uuid/$UUID
+cryptsetup open /dev/disk/by-uuid/$UUID $NAME
+
+if [ ! -b "/dev/mapper/$NAME" ]
+then
+    exit 1
+fi
+
+echo "mounting"
+mount -m /dev/mapper/$NAME /mnt/$NAME
+
+echo "all done"

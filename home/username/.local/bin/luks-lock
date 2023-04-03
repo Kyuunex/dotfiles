@@ -1,0 +1,17 @@
+#!/bin/bash
+UUID=
+NAME=
+
+echo "$NAME"
+
+echo "unmounting"
+umount /mnt/$NAME
+
+echo "locking partition"
+# udisksctl lock -b /dev/disk/by-uuid/$UUID
+cryptsetup close $NAME
+
+# echo "powering off drive"
+# sudo udisksctl power-off -b /dev/disk/by-uuid/$UUID
+
+echo "all done"
