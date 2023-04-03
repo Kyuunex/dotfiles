@@ -1,6 +1,6 @@
 #!/bin/bash
-UUID=
-NAME=
+UUID= # LUKS PARTITION UUID
+NAME= # NAME IT WHAT YOU WANT
 
 echo "$NAME"
 
