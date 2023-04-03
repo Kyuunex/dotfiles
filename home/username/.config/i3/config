@@ -128,15 +128,15 @@ bar {
     position top
     # height 24
     colors {
-        background #2D2A2E
-        statusline #C5C8C6
-        separator  #666666
+        # background #2D2A2E
+        # statusline #C5C8C6
+        # separator  #666666
 
-        focused_workspace  #E04265 #E04265 #000000
-        active_workspace   #E04265 #2D2A2E #FFFFFF
-        inactive_workspace #2D2A2E #2D2A2E #888888
-        urgent_workspace   #2F343A #662636 #FFFFFF
-        binding_mode       #2F343A #662636 #FFFFFF
+        # focused_workspace  #E04265 #E04265 #000000
+        # active_workspace   #E04265 #2D2A2E #FFFFFF
+        # inactive_workspace #2D2A2E #2D2A2E #888888
+        # urgent_workspace   #2F343A #662636 #FFFFFF
+        # binding_mode       #2F343A #662636 #FFFFFF
     }
 }
 # exec --no-startup-id $HOME/.config/polybar/launch.sh

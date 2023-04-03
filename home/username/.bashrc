@@ -29,7 +29,7 @@ if [ "$XDG_SESSION_TYPE" == "wayland" ] ; then
     export SDL_VIDEODRIVER=wayland
     # export QT_QPA_PLATFORM=wayland
     # export CLUTTER_BACKEND=wayland
-    export MOZ_ENABLE_WAYLAND=1
+    # export MOZ_ENABLE_WAYLAND=1
 fi
 
 # source cch
