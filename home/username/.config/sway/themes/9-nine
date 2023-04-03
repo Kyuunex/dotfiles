@@ -13,4 +13,4 @@ client.placeholder      #3465A4 #3465A4 #000000 #3465A4   #3465A4
 client.background       #2D2A2E
 
 # Wallpaper
-output * bg "$HOME/Pictures/wallpapers/large_ev414a.jpg" fill
+output * bg "$HOME/Pictures/wallpapers/large_ev414a.png" fill
