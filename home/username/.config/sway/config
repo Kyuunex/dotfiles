@@ -40,7 +40,7 @@ set $bluetooth_gui blueman-manager
 set $audio_gui pavucontrol-qt
 
 # Primary IM software
-set $im discord-canary
+set $im discord
 
 
 # Your preferred application launcher

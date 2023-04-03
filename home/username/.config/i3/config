@@ -41,7 +41,7 @@ set $bluetooth_gui blueman-manager
 set $audio_gui pavucontrol-qt
 
 # Primary IM software
-set $im discord-canary
+set $im discord
 
 # Menu
 set $menu "rofi -modi window,drun,ssh,combi,run -show drun -theme arthur -combi-modi window,drun,ssh -show-icons -font 'Noto Sans 16'"
