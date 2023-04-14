@@ -1,0 +1,40 @@
+# Vulkan
+sudo pacman -S --needed vulkan-icd-loader lib32-vulkan-icd-loader
+
+# GPU specific #################################################################
+
+# AMD NEW
+sudo pacman -S --needed xf86-video-amdgpu mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-mesa-layers lib32-vulkan-mesa-layers libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau
+
+# AMD OLD
+sudo pacman -S --needed xf86-video-ati mesa lib32-mesa
+
+################################################################################
+
+# NVIDIA DRIVER
+sudo pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings
+sudo pacman -S --needed cuda cudnn opencl-nvidia lib32-opencl-nvidia
+
+# NOUVEAU DRIVER
+sudo pacman -S --needed xf86-video-nouveau mesa lib32-mesa
+
+# NVIDIA-390XX DRIVER
+paru -S lib32-nvidia-390xx-utils nvidia-390xx-dkms nvidia-390xx-utils nvidia-390xx-settings
+
+################################################################################
+
+# INTEL
+sudo pacman -S --needed xf86-video-intel mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-mesa-layers lib32-vulkan-mesa-layers
+
+# Hardware Acceleration ########################################################
+# https://wiki.archlinux.org/index.php/Hardware_video_acceleration#Installation
+
+
+################################################################################
+
+# Force amdgpu on si and sik
+nano /etc/default/grub
+radeon.cik_support=0 amdgpu.cik_support=1 radeon.si_support=0 amdgpu.si_support=1
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# https://wiki.archlinux.org/index.php/AMDGPU
