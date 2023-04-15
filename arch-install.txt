@@ -81,7 +81,8 @@ passwd
 
 pacman -Syu bash bash-completion base-devel linux-firmware networkmanager nano \
 sudo openssh git efibootmgr noto-fonts alacritty alsa-utils pipewire \
-pipewire-alsa pipewire-pulse pipewire-jack amd-ucode # intel-ucode
+pipewire-alsa pipewire-pulse pipewire-jack usbutils p7zip zip unzip unrar lzop \
+traceroute pacman-contrib xdg-user-dirs man amd-ucode # intel-ucode
 
 nano /etc/pacman.conf # ParallelDownloads = 5
 
@@ -131,7 +132,7 @@ echo "KEYMAP=us" > /etc/vconsole.conf
 
 timedatectl set-timezone Asia/Tbilisi
 ln -sf /usr/share/zoneinfo/Asia/Tbilisi /etc/localtime
-hwclock --systohc
+hwclock --systohc --utc
 
 useradd -G wheel -m username
 passwd username
