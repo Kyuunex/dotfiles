@@ -10,9 +10,7 @@
 
 export EDITOR="nano"
 export SUDO_EDITOR="nano"
-export READER="zathura"
-export TERMINAL="alacritty"
-export BROWSER="chromium"
+export TERMINAL="konsole"
 
 source /etc/profile
 
@@ -25,11 +23,11 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-if [ "$XDG_SESSION_TYPE" == "wayland" ] ; then
-    export SDL_VIDEODRIVER=wayland
-    # export QT_QPA_PLATFORM=wayland
-    # export CLUTTER_BACKEND=wayland
-    # export MOZ_ENABLE_WAYLAND=1
-fi
+# if [ "$XDG_SESSION_TYPE" == "wayland" ] ; then
+#     export SDL_VIDEODRIVER=wayland
+#     export QT_QPA_PLATFORM=wayland
+#     export CLUTTER_BACKEND=wayland
+#     export MOZ_ENABLE_WAYLAND=1
+# fi
 
 # source cch
