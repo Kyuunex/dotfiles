@@ -5,7 +5,7 @@ exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id kdeconnect-indicator
 
 # Bluetooth
-exec --no-startup-id blueman-applet
+# exec --no-startup-id blueman-applet
 
 # Notifications
 exec --no-startup-id dunst
