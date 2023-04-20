@@ -1,6 +1,8 @@
 ### Packages required on Arch:
-# sway waybar swaybg alacritty noto-fonts wofi xorg-xwayland swayidle swaylock dolphin blueman
-# kate dmenu grim wl-clipboard slurp mako kdeconnect gnome-keyring polkit-kde-agent network-manager-applet
+# sway swaybg swayidle swaylock wofi waybar mako slurp grim wl-clipboard xorg-xwayland
+# konsole kate kdeconnect polkit-kde-agent kde-cli-tools dolphin kdialog
+# noto-fonts ttf-font-awesome
+# gnome-keyring network-manager-applet xdg-desktop-portal-wlr blueberry dmenu
 ## From AUR:
 # ungoogled-chromium grimshot qt5ct-kde
 
@@ -22,7 +24,7 @@ set $up Up
 set $right Right
 
 # Terminal emulator
-set $term alacritty
+set $term konsole
 
 # Browser
 set $browser chromium
@@ -34,7 +36,7 @@ set $file_manager dolphin
 set $text_editor kate
 
 # Bluetooth GUI
-set $bluetooth_gui blueman-manager
+set $bluetooth_gui blueberry
 
 # Audio GUI
 set $audio_gui pavucontrol-qt
@@ -61,7 +63,7 @@ xwayland enable
 
 set $idle_cmdline swaylock -f -c 000000 -i "$HOME/.config/lockscreen-image" -s fill
 
-# exec swayidle -w timeout 300 $idle_cmdline timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep $idle_cmdline
+exec swayidle -w timeout 300 $idle_cmdline timeout 360 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep $idle_cmdline
 
 bindsym $mod+l exec $idle_cmdline
 
