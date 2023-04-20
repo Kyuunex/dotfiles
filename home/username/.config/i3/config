@@ -44,8 +44,8 @@ set $audio_gui pavucontrol-qt
 set $im discord
 
 # Menu
-set $menu "rofi -modi window,drun,ssh,combi,run -show drun -theme arthur -combi-modi window,drun,ssh -show-icons -font 'Noto Sans 16'"
-set $run "rofi -show run -theme arthur -show-icons -font 'Noto Sans 16'"
+set $menu "rofi -modi window,drun,ssh,combi,run -show drun -theme nord -combi-modi window,drun,ssh -show-icons -font 'Noto Sans 16'"
+set $run "rofi -show run -theme nord -show-icons -font 'Noto Sans 16'"
 # set $run "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#E04265' -sf '#000000' -fn 'monospace-12' -p 'dmenu prompt &gt;'"
 
 
