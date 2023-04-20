@@ -6,87 +6,61 @@ station wlan0 connect SSID_HERE
 
 # SATA #########################################################################
 
-# MBR
-# parted /dev/sda mklabel msdos
-# cfdisk
-
-# GPT
-parted /dev/sda mklabel gpt
+parted /dev/sda mklabel gpt # `msdos` if mbr and partition with cfdisk instead
 sgdisk /dev/sda -n=1:0:+1G -t=1:ef00
 sgdisk /dev/sda -n=2:0:0
 
 mkfs.vfat -n EFIESP /dev/sda1 -F 32
 
-# If setting up encryption
-# cryptsetup -y -v luksFormat /dev/sda2
-# cryptsetup open /dev/sda2 cryptroot
-# mkfs.ext4 -L rootfs /dev/mapper/cryptroot
-mkfs.ext4 -L rootfs /dev/sda2
-# mount -m /dev/mapper/cryptroot /mnt
-mount -m /dev/sda2 /mnt
+# Setting up encrypted root
+cryptsetup -y -v luksFormat /dev/sda2
+cryptsetup open /dev/sda2 cryptroot
+mkfs.ext4 -L rootfs /dev/mapper/cryptroot
+mount -m /dev/mapper/cryptroot /mnt
 
 mount -m /dev/sda1 /mnt/boot
 
 
 # NVME #########################################################################
 
-# MBR
-# parted /dev/nvme0n1 mklabel msdos
-# cfdisk
-
-# GPT
 parted /dev/nvme0n1 mklabel gpt
 sgdisk /dev/nvme0n1 -n=1:0:+1G -t=1:ef00
-sgdisk /dev/nvme0n1 -n=2:0:+64G
+sgdisk /dev/nvme0n1 -n=2:0:+48G
 sgdisk /dev/nvme0n1 -n=3:0:0
 
 mkfs.vfat -n EFIESP /dev/nvme0n1p1 -F 32
 
-# If setting up encryption
-# cryptsetup -y -v luksFormat /dev/nvme0n1p2
-# cryptsetup open /dev/nvme0n1p2 cryptroot
-# mkfs.ext4 -L rootfs /dev/mapper/cryptroot
-mkfs.ext4 -L rootfs /dev/nvme0n1p2
-# mount -m /dev/mapper/cryptroot /mnt
-mount -m /dev/nvme0n1p2 /mnt
+# Setting up encrypted root
+cryptsetup -y -v luksFormat /dev/nvme0n1p2
+cryptsetup open /dev/nvme0n1p2 cryptroot
+mkfs.ext4 -L rootfs /dev/mapper/cryptroot
+mount -m /dev/mapper/cryptroot /mnt
 
-# cryptsetup -y -v luksFormat /dev/nvme0n1p3
-# cryptsetup open /dev/nvme0n1p3 crypthome
-# mkfs.ext4 -L homefs /dev/mapper/crypthome
-# mount -m /dev/mapper/crypthome /mnt/home
+# Setting up encrypted home
+cryptsetup -y -v luksFormat /dev/nvme0n1p3
+cryptsetup open /dev/nvme0n1p3 crypthome
+mkfs.ext4 -L homefs /dev/mapper/crypthome
+mount -m /dev/mapper/crypthome /mnt/home
 
 mount -m /dev/nvme0n1p1 /mnt/boot
 
-
-# eMMC / SDCard ################################################################
-
-parted /dev/mmcblk2 mklabel gpt
-sgdisk /dev/mmcblk2 -n=1:0:+512M -t=1:ef00
-sgdisk /dev/mmcblk2 -n=2:0:0
-
-mkfs.vfat -n EFIESP /dev/mmcblk2p1 -F 32
-mkfs.ext4 -L rootfs /dev/mmcblk2p2
-
-mount -m /dev/mmcblk2p2 /mnt
-mount -m /dev/mmcblk2p1 /mnt/boot
-
 # INSTALLATION PHASE ###########################################################
 
-pacstrap /mnt base linux-hardened grub
+pacstrap /mnt base linux-lts grub
 
 genfstab -U /mnt > /mnt/etc/fstab
 
 arch-chroot /mnt
 passwd
 
-pacman -Syu bash bash-completion base-devel linux-firmware networkmanager nano \
-sudo openssh git efibootmgr noto-fonts alacritty alsa-utils pipewire \
-pipewire-alsa pipewire-pulse pipewire-jack usbutils p7zip zip unzip unrar lzop \
-traceroute pacman-contrib xdg-user-dirs man amd-ucode # intel-ucode
-
 nano /etc/pacman.conf # ParallelDownloads = 5
 
-# nano /etc/mkinitcpio.conf # add `encrypt` to hooks
+pacman -Syu bash bash-completion base-devel linux-firmware networkmanager nano \
+sudo openssh git efibootmgr noto-fonts konsole alsa-utils pipewire wireplumber \
+pipewire-alsa pipewire-pulse pipewire-jack usbutils p7zip zip unzip unrar lzop \
+traceroute pacman-contrib xdg-user-dirs man-db tlp amd-ucode # intel-ucode
+
+nano /etc/mkinitcpio.conf # add `encrypt` to hooks
 mkinitcpio -P
 
 blkid -t TYPE="crypto_LUKS" -s UUID >> /etc/default/grub
@@ -97,7 +71,7 @@ nano /etc/default/grub
 # put the correct echoed UUID at the top, delete the others
 # add Kernel args: cryptdevice=UUID=$UUID:cryptroot root=/dev/mapper/cryptroot
 
-# Avoid having to unlock /home manually
+# Avoid having to unlock /home manually at every boot
 dd bs=512 count=4 if=/dev/random of=/root/home.key iflag=fullblock
 chmod 600 /root/home.key
 cryptsetup luksAddKey /dev/nvme0n1p3 /root/home.key
@@ -106,12 +80,13 @@ nano /etc/crypttab
 
 # https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system
 
-grub-mkconfig -o /boot/grub/grub.cfg
-
 grub-install --target=x86_64-efi --efi-directory=/boot --removable
 grub-install --target=x86_64-efi --efi-directory=/boot
-grub-install --target=i386-pc /dev/sda
+# grub-install --target=i386-pc /dev/sda
 # grub-install --target=i386-efi --efi-directory=/boot --removable
+
+grub-mkconfig -o /boot/grub/grub.cfg
+
 
 echo "archlinux" > /etc/hostname
 echo "127.0.0.1 localhost" >> /etc/hosts
@@ -130,7 +105,7 @@ export LANG=en_IE.UTF-8
 
 echo "KEYMAP=us" > /etc/vconsole.conf
 
-timedatectl set-timezone Asia/Tbilisi
+# timedatectl set-timezone Asia/Tbilisi
 ln -sf /usr/share/zoneinfo/Asia/Tbilisi /etc/localtime
 hwclock --systohc --utc
 
@@ -145,17 +120,17 @@ cd paru-bin
 makepkg -si
 
 # KDE ###############################
-pacman -Syu plasma sddm dolphin konsole kate
+pacman -Syu --needed plasma plasma-wayland-session sddm dolphin konsole kate
 systemctl enable sddm
 balooctl disable
 
-mkdir /etc/sddm.conf.d
-echo -e "[General]\nInputMethod=qtvirtualkeyboard" > /etc/sddm.conf.d/virtualkbd.conf
+# mkdir /etc/sddm.conf.d
+# echo -e "[General]\nInputMethod=qtvirtualkeyboard" > /etc/sddm.conf.d/virtualkbd.conf
 
 # pacman -Syu iio-sensor-proxy # tablet only
 
 # Bluetooth ###############################
-pacman -Syu bluez
+pacman -Syu --needed bluez
 systemctl enable bluetooth.service
 
 # Fix audio cutting out
