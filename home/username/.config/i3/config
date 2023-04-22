@@ -1,15 +1,14 @@
 ### Packages required on Arch:
-# xorg-server xorg-xinit xorg-xrandr
-# alacritty noto-fonts rofi xss-lock i3-wm i3status dolphin kate feh pavucontrol-qt
-# dmenu flameshot dunst kdeconnect gnome-keyring network-manager-applet blueman picom
-# brightnessctl polkit-kde-agent
-# pulseaudio or pipewire-pulse
+# xorg-server xorg-xinit xorg-xrandr i3-wm i3status rofi dunst xss-lock picom
+# konsole kate kdeconnect polkit-kde-agent kde-cli-tools dolphin kdialog
+# noto-fonts feh pavucontrol-qt brightnessctl
+# flameshot gnome-keyring seahorse network-manager-applet blueberry dmenu
 ## From AUR:
 # i3lock-color qt5ct-kde ungoogled-chromium snixembed
 
 ### Packages required on Debian:
 # xserver-xorg-core xinit x11-xserver-utils
-# alacritty fonts-noto rofi xss-lock i3-wm i3lock dolphin kate feh pavucontrol-qt qt5ct i3status polkit-kde-agent-1
+# konsole fonts-noto rofi xss-lock i3-wm i3lock dolphin kate feh pavucontrol-qt qt5ct i3status polkit-kde-agent-1
 # suckless-tools flameshot dunst kdeconnect gnome-keyring network-manager-gnome pulseaudio blueman
 
 # i3 config file (v4)
@@ -23,7 +22,7 @@
 set $mod Mod4
 
 # Terminal
-set $term alacritty
+set $term konsole
 
 # Browser
 set $browser chromium
@@ -35,7 +34,7 @@ set $file_manager dolphin
 set $text_editor kate
 
 # Bluetooth GUI
-set $bluetooth_gui blueman-manager
+set $bluetooth_gui blueberry
 
 # Audio GUI
 set $audio_gui pavucontrol-qt
