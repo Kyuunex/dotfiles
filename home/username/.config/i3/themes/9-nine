@@ -19,3 +19,6 @@ client.background       #2D2A2E
 
 # Wallpaper
 # exec --no-startup-id feh --no-fehbg --bg-fill "$HOME/Pictures/wallpapers/large_ev414a.png"
+
+# curl https://kyuunex.s-ul.eu/static/TLr1JPJY.png --create-dirs -o "$HOME/Pictures/wallpapers/large_ev414a.png"
+# sha256sum "$HOME/Pictures/wallpapers/large_ev414a.png" | grep -q "d5ee70b867c95297ed90bb5d92b479d6a5bdc597149e4dab37e8d254a361f297" && echo "Checksum verified" || echo "Checksum failed"
