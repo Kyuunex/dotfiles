@@ -44,13 +44,13 @@ set $im discord
 
 # Menu
 set $menu "rofi -modi window,drun,ssh,combi,run -show drun -theme nord -combi-modi window,drun,ssh -show-icons -font 'Noto Sans 16'"
-set $run "rofi -show run -theme nord -show-icons -font 'Noto Sans 16'"
-# set $run "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#E04265' -sf '#000000' -fn 'monospace-12' -p 'dmenu prompt &gt;'"
-
+# set $run "rofi -show run -theme nord -show-icons -font 'Noto Sans 16'"
+# set $run "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#E04265' -sf '#000000' -fn 'Noto Sans-11' -p 'dmenu prompt &gt;'"
+# set $run "dmenu_run -nf '#CDD6F4' -nb '#1E1E2E' -sb '#89DCEB' -sf '#1E1E2E' -fn 'Noto Sans-11' -p 'dmenu prompt &gt;'"
+set $run "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#556988' -sf '#000000' -fn 'Noto Sans-11' -p 'dmenu prompt &gt;'"
 
 # refresh_i3status cmdline
 set $refresh_i3status killall -SIGUSR1 i3status
-
 
 ### Appearance
 include themes/9-nine
@@ -59,7 +59,8 @@ include themes/9-nine
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-set $lock_cmdline i3lock -c 000000 -i "$HOME/.config/lockscreen-image" --fill --nofork --clock --keylayout 0 --time-color=FFFFFF --date-color=FFFFFF --layout-color=FFFFFF --date-str="%A %d/%b/%Y"
+# set $lock_cmdline i3lock -c 000000 -i "$HOME/.config/lockscreen-image" --fill --nofork --clock --keylayout 0 --time-color=FFFFFF --date-color=FFFFFF --layout-color=FFFFFF --date-str="%A %d/%b/%Y"
+set $lock_cmdline i3lock -c 000000 --nofork
 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- $lock_cmdline
 bindsym $mod+l exec --no-startup-id $lock_cmdline
@@ -127,6 +128,8 @@ bar {
     position top
     # height 24
     colors {
+        # Pink
+
         # background #2D2A2E
         # statusline #C5C8C6
         # separator  #666666
@@ -136,6 +139,19 @@ bar {
         # inactive_workspace #2D2A2E #2D2A2E #888888
         # urgent_workspace   #2F343A #662636 #FFFFFF
         # binding_mode       #2F343A #662636 #FFFFFF
+
+
+        # Catppuccin
+
+        # background #1E1E2E
+        # statusline #CDD6F4
+        # separator  #BAC2DE
+
+        # focused_workspace  #EA76CB #9A4E85 #FFFFFF
+        # active_workspace   #313244 #45475A #FFFFFF
+        # inactive_workspace #313244 #45475A #BAC2DE
+        # urgent_workspace   #1E1E2E #E64553 #FFFFFF
+        # binding_mode       #1E1E2E #E64553 #FFFFFF
     }
 }
 # exec --no-startup-id $HOME/.config/polybar/launch.sh
