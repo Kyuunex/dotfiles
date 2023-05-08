@@ -56,9 +56,9 @@ passwd
 nano /etc/pacman.conf # ParallelDownloads = 5
 
 pacman -Syu bash bash-completion base-devel linux-firmware networkmanager nano \
-sudo openssh git efibootmgr noto-fonts konsole alsa-utils pipewire wireplumber \
-pipewire-alsa pipewire-pulse pipewire-jack usbutils p7zip zip unzip unrar lzop \
-traceroute pacman-contrib xdg-user-dirs man-db tlp amd-ucode # intel-ucode
+sudo openssh git efibootmgr usbutils p7zip zip unzip unrar traceroute man-db \
+alsa-utils pipewire wireplumber pipewire-alsa pipewire-pulse pipewire-jack \
+xdg-user-dirs pacman-contrib amd-ucode # intel-ucode
 
 nano /etc/mkinitcpio.conf # add `encrypt` to hooks
 mkinitcpio -P
@@ -120,7 +120,10 @@ cd paru-bin
 makepkg -si
 
 # KDE ###############################
-pacman -Syu --needed plasma plasma-wayland-session sddm dolphin konsole kate
+pacman -Syu --needed plasma plasma-wayland-session sddm dolphin konsole kate \
+noto-fonts konsole xdg-desktop-portal-kde gwenview ark filelight kfind kompare \
+okular spectacle kdeconnect kwallet ksysguard ksystemlog kwalletmanager
+
 systemctl enable sddm
 balooctl disable
 
@@ -135,6 +138,8 @@ systemctl enable bluetooth.service
 
 # Fix audio cutting out
 echo "options snd_hda_intel power_save=0" > /etc/modprobe.d/audio_disable_powersave.conf
+# echo "SOUND_POWER_SAVE_ON_AC=0" > /etc/tlp.d/01-no-audio-idle.conf
+# echo "SOUND_POWER_SAVE_CONTROLLER=N" > /etc/tlp.d/02-no-audio-idle.conf
 
 exit
 
