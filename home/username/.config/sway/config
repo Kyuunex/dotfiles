@@ -2,7 +2,7 @@
 # sway swaybg swayidle swaylock wofi waybar mako slurp grim wl-clipboard xorg-xwayland
 # konsole kate kdeconnect polkit-kde-agent kde-cli-tools dolphin kdialog
 # noto-fonts ttf-font-awesome
-# gnome-keyring seahorse network-manager-applet xdg-desktop-portal-wlr blueberry dmenu
+# gnome-keyring seahorse network-manager-applet xdg-desktop-portal-wlr blueberry bemenu bemenu-wayland
 ## From AUR:
 # ungoogled-chromium grimshot qt5ct-kde
 
@@ -49,7 +49,8 @@ set $im discord
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu "wofi --show drun --allow-images -W 576"
-set $run "wofi --show run -W 576"
+# set $run "wofi --show run -W 576"
+set $run "bemenu-run"
 
 ### Output configuration
 include monitors
