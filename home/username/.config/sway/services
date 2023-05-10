@@ -22,3 +22,6 @@ exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 exec --no-startup-id eval $(gnome-keyring-daemon --start)
 exec --no-startup-id export SSH_AUTH_SOCK
 # exec --no-startup-id /usr/lib/pam_kwallet_init
+
+# XDG
+exec --no-startup-id /usr/lib/xdg-desktop-portal -r
