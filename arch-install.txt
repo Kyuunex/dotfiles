@@ -58,7 +58,7 @@ nano /etc/pacman.conf # ParallelDownloads = 5
 pacman -Syu bash bash-completion base-devel linux-firmware networkmanager nano \
 sudo openssh git efibootmgr usbutils p7zip zip unzip unrar traceroute man-db \
 alsa-utils pipewire wireplumber pipewire-alsa pipewire-pulse pipewire-jack \
-xdg-user-dirs pacman-contrib amd-ucode # intel-ucode
+xdg-user-dirs pacman-contrib curl wget aria2 amd-ucode # intel-ucode
 
 nano /etc/mkinitcpio.conf # add `encrypt` to hooks
 mkinitcpio -P
