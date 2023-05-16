@@ -87,7 +87,6 @@ grub-install --target=x86_64-efi --efi-directory=/boot
 
 grub-mkconfig -o /boot/grub/grub.cfg
 
-
 echo "archlinux" > /etc/hostname
 echo "127.0.0.1 localhost" >> /etc/hosts
 
@@ -115,11 +114,7 @@ passwd username
 echo "%wheel ALL=(ALL:ALL) ALL" > /etc/sudoers.d/wheel
 echo "Defaults passwd_timeout=0" > /etc/sudoers.d/no_passwd_timeout
 
-git clone https://aur.archlinux.org/paru-bin.git
-cd paru-bin
-makepkg -si
-
-# KDE ###############################
+# If KDE #######################################################################
 pacman -Syu --needed plasma plasma-wayland-session sddm dolphin konsole kate \
 noto-fonts konsole xdg-desktop-portal-kde gwenview ark filelight kfind kompare \
 okular spectacle kdeconnect kwallet ksysguard ksystemlog kwalletmanager
@@ -127,12 +122,20 @@ okular spectacle kdeconnect kwallet ksysguard ksystemlog kwalletmanager
 systemctl enable sddm
 balooctl disable
 
+### If tablet
 # mkdir /etc/sddm.conf.d
 # echo -e "[General]\nInputMethod=qtvirtualkeyboard" > /etc/sddm.conf.d/virtualkbd.conf
-
 # pacman -Syu iio-sensor-proxy # tablet only
 
-# Bluetooth ###############################
+# If Sway ######################################################################
+pacman -Syu --needed ly sway swaybg swayidle swaylock wofi waybar mako slurp \
+grim wl-clipboard xorg-xwayland konsole kate kdeconnect polkit-kde-agent \
+kde-cli-tools dolphin kdialog noto-fonts ttf-font-awesome gnome-keyring \
+seahorse network-manager-applet xdg-desktop-portal-wlr blueberry bemenu \
+bemenu-wayland chromium qt5ct gwenview ark filelight kfind kompare okular \
+kwallet ksysguard ksystemlog kwalletmanager
+
+# Bluetooth ####################################################################
 pacman -Syu --needed bluez
 systemctl enable bluetooth.service
 
