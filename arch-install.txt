@@ -7,46 +7,61 @@ station wlan0 connect SSID_HERE
 # SATA #########################################################################
 
 parted /dev/sda mklabel gpt # `msdos` if mbr and partition with cfdisk instead
-sgdisk /dev/sda -n=1:0:+1G -t=1:ef00
-sgdisk /dev/sda -n=2:0:0
+sgdisk /dev/sda -n=1:0:+300M -t=1:ef00
+sgdisk /dev/sda -n=2:0:+1G
+sgdisk /dev/sda -n=3:0:0
 
 mkfs.vfat -n EFIESP /dev/sda1 -F 32
 
 # Setting up encrypted root
-cryptsetup -y -v luksFormat /dev/sda2
-cryptsetup open /dev/sda2 cryptroot
+cryptsetup -y -v luksFormat /dev/sda3
+cryptsetup open /dev/sda3 cryptroot
 mkfs.ext4 -L rootfs /dev/mapper/cryptroot
 mount -m /dev/mapper/cryptroot /mnt
 
-mount -m /dev/sda1 /mnt/boot
+# Setting up encrypted boot
+cryptsetup luksFormat --type luks1 /dev/sda2
+cryptsetup open /dev/sda2 cryptboot
+mkfs.ext4 -L bootfs /dev/mapper/cryptboot
+mount -m /dev/mapper/cryptboot /mnt/boot
+
+
+mount -m /dev/sda1 /mnt/efi
 
 
 # NVME #########################################################################
 
 parted /dev/nvme0n1 mklabel gpt
-sgdisk /dev/nvme0n1 -n=1:0:+1G -t=1:ef00
-sgdisk /dev/nvme0n1 -n=2:0:+48G
-sgdisk /dev/nvme0n1 -n=3:0:0
+sgdisk /dev/nvme0n1 -n=1:0:+300M -t=1:ef00
+sgdisk /dev/nvme0n1 -n=2:0:+1G
+sgdisk /dev/nvme0n1 -n=3:0:+48G
+sgdisk /dev/nvme0n1 -n=4:0:0
 
 mkfs.vfat -n EFIESP /dev/nvme0n1p1 -F 32
 
 # Setting up encrypted root
-cryptsetup -y -v luksFormat /dev/nvme0n1p2
-cryptsetup open /dev/nvme0n1p2 cryptroot
+cryptsetup -y -v luksFormat /dev/nvme0n1p3
+cryptsetup open /dev/nvme0n1p3 cryptroot
 mkfs.ext4 -L rootfs /dev/mapper/cryptroot
 mount -m /dev/mapper/cryptroot /mnt
 
 # Setting up encrypted home
-cryptsetup -y -v luksFormat /dev/nvme0n1p3
-cryptsetup open /dev/nvme0n1p3 crypthome
+cryptsetup -y -v luksFormat /dev/nvme0n1p4
+cryptsetup open /dev/nvme0n1p4 crypthome
 mkfs.ext4 -L homefs /dev/mapper/crypthome
 mount -m /dev/mapper/crypthome /mnt/home
 
-mount -m /dev/nvme0n1p1 /mnt/boot
+# Setting up encrypted boot
+cryptsetup luksFormat --type luks1 /dev/nvme0n1p2
+cryptsetup open /dev/nvme0n1p2 cryptboot
+mkfs.ext4 -L bootfs /dev/mapper/cryptboot
+mount -m /dev/mapper/cryptboot /mnt/boot
+
+mount -m /dev/nvme0n1p1 /mnt/efi
 
 # INSTALLATION PHASE ###########################################################
 
-pacstrap /mnt base linux-lts grub
+pacstrap /mnt base linux-lts grub nano
 
 genfstab -U /mnt > /mnt/etc/fstab
 
@@ -54,8 +69,9 @@ arch-chroot /mnt
 passwd
 
 nano /etc/pacman.conf # ParallelDownloads = 5
+echo "Server = https://europe.mirror.pkgbuild.com/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
 
-pacman -Syu bash bash-completion base-devel linux-firmware networkmanager nano \
+pacman -Syu --needed bash bash-completion base-devel linux-firmware networkmanager \
 sudo openssh git efibootmgr usbutils p7zip zip unzip unrar traceroute man-db \
 alsa-utils pipewire wireplumber pipewire-alsa pipewire-pulse pipewire-jack \
 xdg-user-dirs pacman-contrib curl wget aria2 amd-ucode # intel-ucode
@@ -71,19 +87,25 @@ nano /etc/default/grub
 # put the correct echoed UUID at the top, delete the others
 # add Kernel args: cryptdevice=UUID=$UUID:cryptroot root=/dev/mapper/cryptroot
 
-# Avoid having to unlock /home manually at every boot
+# Avoid having to unlock /home and /boot manually at every boot
+
+dd bs=512 count=4 if=/dev/random of=/root/boot.key iflag=fullblock
+chmod 600 /root/boot.key
+cryptsetup luksAddKey /dev/nvme0n1p2 /root/boot.key
+
 dd bs=512 count=4 if=/dev/random of=/root/home.key iflag=fullblock
 chmod 600 /root/home.key
-cryptsetup luksAddKey /dev/nvme0n1p3 /root/home.key
+cryptsetup luksAddKey /dev/nvme0n1p4 /root/home.key
+
 blkid -t TYPE="crypto_LUKS" -s UUID >> /etc/crypttab
 nano /etc/crypttab
 
 # https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system
 
-grub-install --target=x86_64-efi --efi-directory=/boot --removable
-grub-install --target=x86_64-efi --efi-directory=/boot
+grub-install --target=x86_64-efi --efi-directory=/efi --removable
+grub-install --target=x86_64-efi --efi-directory=/efi
 # grub-install --target=i386-pc /dev/sda
-# grub-install --target=i386-efi --efi-directory=/boot --removable
+# grub-install --target=i386-efi --efi-directory=/efi --removable
 
 grub-mkconfig -o /boot/grub/grub.cfg
 
@@ -134,6 +156,13 @@ kde-cli-tools dolphin kdialog noto-fonts ttf-font-awesome gnome-keyring \
 seahorse network-manager-applet xdg-desktop-portal-wlr blueberry bemenu \
 bemenu-wayland chromium qt5ct gwenview ark filelight kfind kompare okular \
 kwallet ksysguard ksystemlog kwalletmanager
+
+systemctl enable ly.service
+
+# as user
+git clone https://github.com/Kyuunex/my-linux-configs.git
+cd my-linux-configs
+./copy_home_config.sh
 
 # Bluetooth ####################################################################
 pacman -Syu --needed bluez
