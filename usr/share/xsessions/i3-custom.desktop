@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=i3 (Custom)
-Comment=improved dynamic tiling window manager
-Exec=i3-custom
-TryExec=i3-custom
-Type=Application
-X-LightDM-DesktopName=i3
-DesktopNames=i3
-Keywords=tiling;wm;windowmanager;window;manager;

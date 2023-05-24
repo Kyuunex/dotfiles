@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Sway (Custom)
-Comment=An i3-compatible Wayland compositor
-Exec=sway-custom
-Type=Application
