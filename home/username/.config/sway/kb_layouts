@@ -1,3 +1,6 @@
+#!/bin/bash
+# line above is only for syntax highlighting
+
 input "type:keyboard" {
     xkb_layout us,ge
     xkb_options grp:win_space_toggle
