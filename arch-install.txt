@@ -35,9 +35,9 @@ mount -m /dev/sda1 /mnt/efi
 # NVME #########################################################################
 
 parted /dev/nvme0n1 mklabel gpt
-sgdisk /dev/nvme0n1 -n=1:0:+300M -t=1:ef00
+sgdisk /dev/nvme0n1 -n=1:0:+600M -t=1:ef00
 sgdisk /dev/nvme0n1 -n=2:0:+1G
-sgdisk /dev/nvme0n1 -n=3:0:+48G
+sgdisk /dev/nvme0n1 -n=3:0:+64G
 sgdisk /dev/nvme0n1 -n=4:0:0
 
 mkfs.vfat -n EFIESP /dev/nvme0n1p1 -F 32
@@ -64,7 +64,7 @@ mount -m /dev/nvme0n1p1 /mnt/efi
 
 # INSTALLATION PHASE ###########################################################
 
-pacstrap /mnt base linux-lts grub nano
+pacstrap /mnt base nano
 
 genfstab -U /mnt > /mnt/etc/fstab
 
@@ -74,8 +74,9 @@ passwd
 nano /etc/pacman.conf # ParallelDownloads = 5
 echo "Server = https://europe.mirror.pkgbuild.com/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
 
-pacman -Syu --needed bash bash-completion base-devel linux-firmware networkmanager \
-sudo openssh git efibootmgr usbutils p7zip zip unzip unrar traceroute man-db \
+pacman -Syu --needed linux-lts grub bash bash-completion base-devel \
+linux-firmware networkmanager sudo openssh git efibootmgr usbutils \
+p7zip zip unzip unrar traceroute man-db mkinitcpio \
 alsa-utils pipewire wireplumber pipewire-alsa pipewire-pulse pipewire-jack \
 xdg-user-dirs pacman-contrib curl wget aria2 amd-ucode # intel-ucode
 
@@ -142,7 +143,7 @@ echo "Defaults passwd_timeout=0" > /etc/sudoers.d/no_passwd_timeout
 # If KDE #######################################################################
 pacman -Syu --needed plasma plasma-wayland-session sddm dolphin konsole kate \
 noto-fonts konsole xdg-desktop-portal-kde gwenview ark filelight kfind kompare \
-okular spectacle kdeconnect kwallet ksysguard ksystemlog kwalletmanager
+okular spectacle kdeconnect kwallet ksysguard ksystemlog kwalletmanager kdialog
 
 systemctl enable sddm
 balooctl disable
