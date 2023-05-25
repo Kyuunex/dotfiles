@@ -14,4 +14,7 @@ echo "Wallpaper downloaded and its checksum verified" || echo "Wallpaper downloa
 curl https://raw.githubusercontent.com/undiabler/nord-rofi-theme/eebddcbf36052e140a9af7c86f1fbd88e31d2365/nord.rasi --create-dirs -o "$HOME/.config/rofi/nord.rasi"
 echo "rofi nord theme downloaded!"
 
+curl https://raw.githubusercontent.com/catppuccin/kitty/2f7a98ee3677dda8971b3d7a753adc5b5c80bf83/themes/mocha.conf --create-dirs -o "$HOME/.config/kitty/kitty.conf"
+echo "kitty theme downloaded!"
+
 echo "copy done"
