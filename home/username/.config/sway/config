@@ -1,3 +1,6 @@
+#!/bin/bash
+# line above is only for syntax highlighting
+
 ### Packages required on Arch:
 # sway swaybg swayidle swaylock wofi waybar mako slurp grim wl-clipboard xorg-xwayland
 # konsole kate kdeconnect polkit-kde-agent kde-cli-tools dolphin kdialog kitty
@@ -143,3 +146,6 @@ include startup/*
 
 
 include /etc/sway/config.d/*
+
+
+# vim: syntax=python
