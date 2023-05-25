@@ -14,3 +14,6 @@ output HDMI-A-3 pos 0 0 res 1920x1080@60.000Hz
 # and manually turn it on when I need it.
 output DP-1 adaptive_sync off
 
+### Manual commands
+# swaymsg -- <command>
+

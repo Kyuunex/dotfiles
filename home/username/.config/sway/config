@@ -1,6 +1,6 @@
 ### Packages required on Arch:
 # sway swaybg swayidle swaylock wofi waybar mako slurp grim wl-clipboard xorg-xwayland
-# konsole kate kdeconnect polkit-kde-agent kde-cli-tools dolphin kdialog
+# konsole kate kdeconnect polkit-kde-agent kde-cli-tools dolphin kdialog kitty
 # noto-fonts ttf-font-awesome
 # gnome-keyring seahorse network-manager-applet xdg-desktop-portal-wlr blueberry bemenu bemenu-wayland
 ## From AUR:
@@ -24,7 +24,7 @@ set $up Up
 set $right Right
 
 # Terminal emulator
-set $term konsole
+set $term kitty
 
 # Browser
 set $browser chromium
