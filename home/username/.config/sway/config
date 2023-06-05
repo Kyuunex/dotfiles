@@ -27,7 +27,7 @@ set $up Up
 set $right Right
 
 # Terminal emulator
-set $term kitty
+set $term konsole
 
 # Browser
 set $browser chromium
