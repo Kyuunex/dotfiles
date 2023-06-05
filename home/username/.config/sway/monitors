@@ -19,4 +19,3 @@ output DP-1 adaptive_sync off
 
 ### Manual commands
 # swaymsg -- <command>
-
