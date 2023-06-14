@@ -11,6 +11,7 @@ for_window [app_id="osu!"] border none
 # for_window [class="explorer.exe"] floating disable, border none
 # for_window [class="^([^o].*|o[^s].*|os[^u].*|osu[^!].*|osu!.+)\.exe$"] floating enable
 for_window [app_id="firefox"] border pixel 2
+for_window [title="Firefox — Sharing Indicator" app_id="firefox"] floating enable
 for_window [app_id="chromium"] border pixel 2
 for_window [class="brave-browser"] border pixel 2
 for_window [class="Brave-browser"] border pixel 2
@@ -25,6 +26,7 @@ for_window [class="spine"] floating enable
 for_window [class="steam_app_.*"] floating enable
 for_window [class="steam_proton"] floating enable
 for_window [class="Steam"] border pixel 2
+for_window [class="steam"] border pixel 2
 for_window [app_id="spek"] floating enable
 for_window [app_id="org.kde.gwenview"] floating enable
 for_window [app_id="org.kde.kcalc"] floating enable
