@@ -6,7 +6,7 @@
 
 # for_window [class=".*"] border pixel 2
 # for_window [class="osu!.exe"] floating enable, border none
-# for_window [class="osu!"] floating disable, border none
+for_window [class="osu!"] border none
 # for_window [class="explorer.exe"] floating disable, border none
 # for_window [class="^([^o].*|o[^s].*|os[^u].*|osu[^!].*|osu!.+)\.exe$"] floating enable
 for_window [class="firefox"] border pixel 2
@@ -29,6 +29,7 @@ for_window [class="steam_proton"] floating enable
 for_window [class="spek"] floating enable
 for_window [class="Spek"] floating enable
 for_window [class="gwenview"] floating enable
+for_window [class="kcalc"] floating enable
 for_window [class="pavucontrol-qt"] floating disable
 for_window [class="mupen64plus"] floating enable
 for_window [class="rpcs3"] floating enable
