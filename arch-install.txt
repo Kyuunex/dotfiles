@@ -64,14 +64,14 @@ mount -m /dev/nvme0n1p1 /mnt/efi
 
 # INSTALLATION PHASE ###########################################################
 
-pacstrap /mnt base nano
+pacstrap -K /mnt base nano
 
 genfstab -U /mnt > /mnt/etc/fstab
 
 arch-chroot /mnt
 passwd
 
-nano /etc/pacman.conf # ParallelDownloads = 5
+nano /etc/pacman.conf # ParallelDownloads = 5, also enable multilib
 echo "Server = https://europe.mirror.pkgbuild.com/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
 
 pacman -Syu --needed linux-lts grub bash bash-completion base-devel \
