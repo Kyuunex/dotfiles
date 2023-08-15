@@ -5,38 +5,47 @@
 # to get window classes, run: xprop | grep -i 'class'
 
 # for_window [class=".*"] border pixel 2
-# for_window [class="osu!.exe"] floating enable, border none
-for_window [class="osu!"] border none
 # for_window [class="explorer.exe"] floating disable, border none
 # for_window [class="^([^o].*|o[^s].*|os[^u].*|osu[^!].*|osu!.+)\.exe$"] floating enable
-for_window [class="firefox"] border pixel 2
-for_window [class="chromium"] border pixel 2
-for_window [class="Chromium"] border pixel 2
-for_window [class="brave-browser"] border pixel 2
-for_window [class="Brave-browser"] border pixel 2
+
 for_window [class="vmware"] border pixel 2
 for_window [class="Vmware"] border pixel 2
 for_window [class="virt-manager"] border pixel 2
 for_window [class="Virt-manager"] border pixel 2
 for_window [class=".*.exe"] floating enable
-for_window [class="mpv"] floating enable
-for_window [class="onscripter-ru.*"] floating enable
-for_window [class="Umineko1to4"] floating enable
-for_window [class="Umineko5to8"] floating enable
-for_window [class="spine"] floating enable
-for_window [class="steam_app_.*"] floating enable
-for_window [class="steam_proton"] floating enable
-for_window [class="spek"] floating enable
-for_window [class="Spek"] floating enable
-for_window [class="gwenview"] floating enable
 for_window [class="kcalc"] floating enable
 for_window [class="pavucontrol-qt"] floating disable
-for_window [class="mupen64plus"] floating enable
-for_window [class="rpcs3"] floating enable
-for_window [class="RPCS3"] floating enable
 for_window [class="anbox"] floating enable
-for_window [class="gst-play-1.0"] floating enable
-for_window [class="GStreamer"] floating enable
-# for_window [title="Higurashi*"] floating enable
 # default_border none
 # default_floating_border none
+
+# Steam
+for_window [class="steam_app_.*"] floating enable
+for_window [class="steam_proton"] floating enable
+
+# Games
+for_window [class="onscripter-ru.*"] floating enable
+for_window [class="spine"] floating enable
+for_window [class="mupen64plus"] floating enable
+for_window [class="Umineko1to4"] floating enable
+for_window [class="Umineko5to8"] floating enable
+for_window [class="rpcs3"] floating enable
+for_window [class="RPCS3"] floating enable
+# for_window [title="Higurashi*"] floating enable
+for_window [class="osu!"] border none
+# for_window [class="osu!.exe"] floating enable, border none
+
+# Browsers
+for_window [class="firefox"] border pixel 2
+for_window [class="chromium"] border pixel 2
+for_window [class="Chromium"] border pixel 2
+for_window [class="brave-browser"] border pixel 2
+for_window [class="Brave-browser"] border pixel 2
+
+# Media viewers
+for_window [class="gst-play-1.0"] floating enable
+for_window [class="mpv"] floating enable
+for_window [class="GStreamer"] floating enable
+for_window [class="gwenview"] floating enable
+for_window [class="spek"] floating enable
+for_window [class="Spek"] floating enable
