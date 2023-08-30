@@ -1,4 +1,4 @@
-# my-linux-configs
+# dotfiles
 i don't care how you make use of this but i accept no responsibility should something happen.  
 
 # why is this public?
