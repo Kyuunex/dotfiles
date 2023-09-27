@@ -119,6 +119,9 @@ bindsym $mod+t exec $term -e htop
 bindsym $mod+y exec $im
 bindsym $mod+z exec $run
 
+# Websites
+bindsym Ctrl+Shift+Alt+Mod4+l exec xdg-open https://linkedin.com
+
 # Screenshots
 bindsym Print exec grimshot save area
 bindsym $mod+Print exec grimshot save window
