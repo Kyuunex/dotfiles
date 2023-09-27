@@ -1,0 +1,9 @@
+#!/bin/bash
+# line above is only for syntax highlighting
+
+# blur enable
+# blur_xray enable
+# corner_radius 4
+# layer_effects "waybar" blur enable; shadows enable; corner_radius 6
+# default_dim_inactive 0.2
+# titlebar_separator enable

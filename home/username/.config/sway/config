@@ -149,3 +149,5 @@ include /etc/sway/config.d/*
 
 
 # vim: syntax=python
+
+include swayfx
