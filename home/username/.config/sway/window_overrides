@@ -13,12 +13,15 @@ for_window [class="Vmware"] border pixel 2
 for_window [app_id="virt-manager"] border pixel 2
 for_window [class=".*.exe"] floating enable
 for_window [app_id=".*.exe"] floating enable
-for_window [app_id="org.kde.kcalc"] floating enable
 for_window [app_id="pavucontrol-qt"] floating disable
 for_window [class="anbox"] floating enable
-for_window [app_id="org.kde.polkit-kde-authentication-agent-1"] floating enable
 # default_border none
 # default_floating_border none
+
+# KDE stuff
+for_window [app_id="org.kde.kcalc"] floating enable
+for_window [app_id="org.kde.polkit-kde-authentication-agent-1"] floating enable
+for_window [app_id="org.kde.keditfiletype"] floating enable
 
 # Dolphin file manager dialogs
 for_window [title="Copying .*. Dolphin"] floating enable
