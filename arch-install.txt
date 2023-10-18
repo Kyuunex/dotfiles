@@ -62,6 +62,18 @@ mount -m /dev/mapper/cryptboot /mnt/boot
 
 mount -m /dev/nvme0n1p1 /mnt/efi
 
+# VIRTUAL MACHINE ##############################################################
+
+parted /dev/vda mklabel gpt
+sgdisk /dev/vda -n=1:0:+300M -t=1:ef00
+sgdisk /dev/vda -n=2:0:0
+
+mkfs.vfat -n EFIESP /dev/vda1 -F 32
+mkfs.ext4 -L rootfs /dev/vda2
+
+mount -m /dev/vda2 /mnt
+mount -m /dev/vda1 /mnt/efi
+
 # INSTALLATION PHASE ###########################################################
 
 pacstrap -K /mnt base nano
