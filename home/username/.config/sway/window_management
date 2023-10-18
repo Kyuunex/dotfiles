@@ -8,6 +8,9 @@ floating_modifier $mod normal
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'End sway session?' -b 'Yes' 'swaymsg exit'
 
+# Emergency poweroff
+bindsym $mod+Shift+p exec swaynag -t warning -m 'Emergency poweroff?' -b 'Yes' 'powerout'
+
 # Reload the configuration file
 bindsym $mod+Shift+c reload
 
