@@ -53,6 +53,7 @@ for_window [class="RPCS3"] floating enable
 # for_window [title="Higurashi*"] floating enable
 for_window [app_id="osu!"] border none
 # for_window [class="osu!.exe"] floating enable, border none
+for_window [class="cs2"] floating enable
 
 # Browsers
 for_window [app_id="firefox"] border pixel 2
