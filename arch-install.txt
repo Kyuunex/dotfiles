@@ -176,8 +176,8 @@ kwallet ksysguard ksystemlog kwalletmanager
 systemctl enable ly.service
 
 # as user
-git clone https://github.com/Kyuunex/my-linux-configs.git
-cd my-linux-configs
+git clone https://github.com/Kyuunex/dotfiles.git
+cd dotfiles
 ./copy_home_config.sh
 
 # Bluetooth ####################################################################
