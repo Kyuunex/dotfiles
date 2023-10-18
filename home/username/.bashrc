@@ -7,6 +7,9 @@
 
 export EDITOR="nano"
 export SUDO_EDITOR="nano"
+export XDG_SCREENSHOTS_DIR="$HOME/Pictures/Screenshots/"
+
+export SDL_AUDIODRIVER=pipewire
 
 source /etc/profile
 
