@@ -13,11 +13,13 @@ for_window [class="Vmware"] border pixel 2
 for_window [class="virt-manager"] border pixel 2
 for_window [class="Virt-manager"] border pixel 2
 for_window [class=".*.exe"] floating enable
-for_window [class="kcalc"] floating enable
 for_window [class="pavucontrol-qt"] floating disable
 for_window [class="anbox"] floating enable
 # default_border none
 # default_floating_border none
+
+# KDE stuff
+for_window [class="kcalc"] floating enable
 
 # Steam
 for_window [class="steam_app_.*"] floating enable
@@ -34,6 +36,7 @@ for_window [class="RPCS3"] floating enable
 # for_window [title="Higurashi*"] floating enable
 for_window [class="osu!"] border none
 # for_window [class="osu!.exe"] floating enable, border none
+for_window [class="cs2"] floating enable
 
 # Browsers
 for_window [class="firefox"] border pixel 2
