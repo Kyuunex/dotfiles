@@ -109,6 +109,9 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'End session?' -B 'Yes' 'i3-msg exit'"
 bindsym $mod+Shift+t exec "i3-nagbar -t warning -m 'Power off?' -B 'Yes' 'poweroff'"
 
+# Emergency poweroff
+bindsym $mod+Shift+p exec "i3-nagbar -t warning -m 'Emergency poweroff?' -B 'Yes' 'powerout'"
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
