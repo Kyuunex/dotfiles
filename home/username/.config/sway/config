@@ -1,98 +1,226 @@
-#!/bin/bash
-# line above is only for syntax highlighting
-
+# Config for sway
+#
 ### Packages required on Arch:
 # sway swaybg swayidle swaylock wofi waybar mako slurp grim wl-clipboard xorg-xwayland
-# konsole kate kdeconnect polkit-kde-agent kde-cli-tools dolphin kdialog kitty
+# konsole kate kdeconnect polkit-kde-agent kde-cli-tools dolphin kdialog
 # noto-fonts ttf-font-awesome
-# gnome-keyring seahorse network-manager-applet xdg-desktop-portal-wlr blueberry bemenu bemenu-wayland
+# gnome-keyring seahorse network-manager-applet xdg-desktop-portal-wlr blueberry
 ## From AUR:
-# ungoogled-chromium grimshot qt5ct-kde
-
+# ungoogled-chromium grimshot qt5ct-kde wmenu
+#
 # Read `man 5 sway` for a complete reference.
 
-
-### Appearance
-include themes/plasma
-# gaps inner 0
-
-
 ### Variables
-
+#
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
-
-# Home row direction keys
-set $left Left
-set $down Down
-set $up Up
-set $right Right
-
-# Terminal emulator
+# Home row direction keys, like vim
+# set $left h
+# set $down j
+# set $up k
+# set $right l
+# Your preferred terminal emulator
 set $term konsole
-
-# Browser
-set $browser chromium
-
-# File manager
-set $file_manager dolphin
-
-# Text editor
-set $text_editor kate
-
-# Bluetooth GUI
-set $bluetooth_gui blueberry
-
-# Audio GUI
-set $audio_gui pavucontrol-qt
-
-# Primary IM software
-set $im discord
-
-
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu "wofi --show drun --allow-images -W 576"
-# set $run "wofi --show run -W 576"
-set $run "bemenu-run"
+set $menu dmenu_path | wmenu | xargs swaymsg exec --
+set $launcher "wofi --show drun --allow-images -W 576"
 
 ### Output configuration
-include monitors
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+    include monitors
+    xwayland enable
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
 
+# Appearance
+include themes/plasma
 
-# Don't forget xwayland
-xwayland enable
-
-
-### Idle and Lockscreen configuration
-
+### Idle configuration
+#
+# Example configuration:
+#
 # set $idle_cmdline swaylock -f -c 000000 -i "$HOME/.config/lockscreen-image" -s fill
-
 set $idle_cmdline swaylock -f -c 000000
-
-
-exec swayidle -w timeout 300 $idle_cmdline timeout 360 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep $idle_cmdline
+exec swayidle -w \
+         timeout 300 $idle_cmdline \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep $idle_cmdline
 
 bindsym $mod+l exec $idle_cmdline
 
+#
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
-
 ### Input configuration
+#
+# Example configuration:
+#
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+    include kb_layouts
+    input * accel_profile flat
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
-include kb_layouts
 
-# Mouse acceleration is retarded why is it always on by default?
-input * accel_profile flat
+### Key bindings
+#
+# Basics:
+#
+    # Start a terminal
+    bindsym $mod+Return exec $term
 
+    # Kill focused window
+    bindsym $mod+Shift+q kill
 
-### Volume adjustment keybinds
+    # Start your launcher
+    bindsym $mod+z exec $menu
 
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+    # Emergency poweroff
+    bindsym $mod+Shift+p exec swaynag -t warning -m 'Emergency poweroff?' -b 'Yes' 'powerout'
+#
+# Moving around:
+#
+    # Move your focus around
+    # bindsym $mod+$left focus left
+    # bindsym $mod+$down focus down
+    # bindsym $mod+$up focus up
+    # bindsym $mod+$right focus right
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # Move the focused window with the same, but add Shift
+    # bindsym $mod+Shift+$left move left
+    # bindsym $mod+Shift+$down move down
+    # bindsym $mod+Shift+$up move up
+    # bindsym $mod+Shift+$right move right
+    # Ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+#
+# Workspaces:
+#
+    # Switch to workspace
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 10
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+h splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+u floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+u focus mode_toggle
+
+    # Move focus to the parent container
+    bindsym $mod+a focus parent
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+t move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+t scratchpad show
+#
+# Resizing containers:
+#
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    # bindsym $left resize shrink width 10px
+    # bindsym $down resize grow height 10px
+    # bindsym $up resize shrink height 10px
+    # bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+bindsym --release --border button2 kill
+
+# Volume adjustment keybinds
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -104,33 +232,19 @@ bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym --whole-window --border $mod+button4 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym --whole-window --border $mod+button5 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 
-
-### Key bindings
-
-# Terminal
-bindsym $mod+Return exec $term
-
 # Software
-bindsym $mod+b exec $browser
-bindsym $mod+d exec $menu
-bindsym $mod+i exec $file_manager
-bindsym $mod+k exec $text_editor
-bindsym $mod+o exec $bluetooth_gui
-bindsym $mod+p exec $audio_gui
-bindsym $mod+t exec $term -e htop
-bindsym $mod+y exec $im
-bindsym $mod+z exec $run
-
-# Websites
-bindsym Ctrl+Shift+Alt+Mod4+l exec xdg-open https://linkedin.com
+bindsym $mod+b exec chromium
+bindsym $mod+d exec $launcher
+bindsym $mod+i exec dolphin
+bindsym $mod+k exec kate
+bindsym $mod+o exec blueberry
+bindsym $mod+p exec pavucontrol-qt
+bindsym $mod+y exec discord
 
 # Screenshots
 bindsym Print exec grimshot save area
 bindsym $mod+Print exec grimshot save window
 bindsym $mod+Shift+Print exec grimshot save output
-
-### Window management Keybinds
-include window_management
 
 #
 # Status Bar:
@@ -140,19 +254,13 @@ bar {
     swaybar_command waybar
 }
 
-### Window specific overrides
+# Window specific overrides
 include window_overrides
 
-### Services
+# Services
 include services
 
-### Application startup
+# Application startup
 include startup/*
 
-
 include /etc/sway/config.d/*
-
-
-# vim: syntax=python
-
-include swayfx

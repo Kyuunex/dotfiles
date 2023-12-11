@@ -1,6 +1,3 @@
-#!/bin/bash
-# line above is only for syntax highlighting
-
 ### Window specific overrides
 # to get window classes for xwayland apps, run: xprop | grep -i 'class'
 # to get app_id, run: `swaymsg -t get_tree`

@@ -1,6 +1,3 @@
-#!/bin/bash
-# line above is only for syntax highlighting
-
 ### Appearance
 
 # Font
@@ -8,14 +5,14 @@ font pango:"Noto Sans" Regular 9
 
 # Colours
 # class                 border  backgr. text    indicator child_border
-client.focused          #556988 #556988 #000000 #556988   #556988
+client.focused          #E04265 #E04265 #000000 #E04265   #E04265
 client.focused_inactive #393C41 #43464B #FFFFFF #43464B   #393C41
 client.unfocused        #393C41 #43464B #FFFFFF #43464B   #393C41
-client.urgent           #FF6188 #FF6188 #000000 #FF6188   #FF6188
+client.urgent           #662636 #662636 #000000 #662636   #662636
 client.placeholder      #3465A4 #3465A4 #000000 #3465A4   #3465A4
 client.background       #2D2A2E
 
 # Wallpaper
-output * bg "/usr/share/wallpapers/Next/contents/images_dark/1920x1080.png" fill
+output * bg "/usr/share/wallpapers/MilkyWay/contents/images/1080x1920.png" fill
 
 
