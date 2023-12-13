@@ -1,11 +1,11 @@
 {
-    // "layer": "top", // Waybar at top layer
-    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["custom/menu-button", "sway/workspaces", "sway/mode"],
-    // "modules-center": ["sway/window"],
+    "modules-left": ["custom/menu-button", "hyprland/workspaces", "sway/workspaces", "sway/mode"],
+    // "modules-center": ["sway/window", "hyprland/window"],
     "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "sway/language", "tray", "clock"],
     // Modules configuration
     "sway/workspaces": {
@@ -35,8 +35,18 @@
     //        "10": ["HDMI-A-1"]
     //    }
     },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "on-click": "activate"
+    },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
+    },
+    "hyprland/window": {
+        "max-length": 200,
+        "separate-outputs": true
     },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ ",
