@@ -1,6 +1,3 @@
-#!/bin/bash
-# line above is only for syntax highlighting
-
 ### Window specific overrides
 # to get window classes, run: xprop | grep -i 'class'
 
@@ -24,6 +21,7 @@ for_window [class="kcalc"] floating enable
 # Steam
 for_window [class="steam_app_.*"] floating enable
 for_window [class="steam_proton"] floating enable
+for_window [title="Steam Settings"] floating enable
 
 # Games
 for_window [class="onscripter-ru.*"] floating enable
