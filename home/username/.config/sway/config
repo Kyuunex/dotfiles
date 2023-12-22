@@ -1,11 +1,14 @@
 # Config for sway
 #
-### Packages required on Arch:
+# Packages required on Arch:
+#
 # sway swaybg swayidle swaylock wofi waybar mako slurp grim wl-clipboard xorg-xwayland
 # konsole kate kdeconnect polkit-kde-agent kde-cli-tools dolphin kdialog
 # noto-fonts ttf-font-awesome
 # gnome-keyring seahorse network-manager-applet xdg-desktop-portal-wlr blueberry
-## From AUR:
+#
+# From AUR:
+#
 # ungoogled-chromium grimshot qt5ct-kde wmenu
 #
 # Read `man 5 sway` for a complete reference.
@@ -27,6 +30,16 @@ set $term konsole
 set $menu dmenu_path | wmenu | xargs swaymsg exec --
 set $launcher "wofi --show drun --allow-images -W 576"
 
+set $vol_up "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+set $vol_down "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+
+set $browser chromium
+set $file_manager dolphin
+set $text_editor kate
+set $bluetooth_gui blueberry
+set $audio_gui pavucontrol-qt
+set $im discord
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -41,7 +54,7 @@ set $launcher "wofi --show drun --allow-images -W 576"
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 # Appearance
-include themes/plasma
+include themes/plasma-next
 
 ### Idle configuration
 #
@@ -221,25 +234,25 @@ bindsym $mod+r mode "resize"
 bindsym --release --border button2 kill
 
 # Volume adjustment keybinds
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id $vol_up
+bindsym XF86AudioLowerVolume exec --no-startup-id $vol_down
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-bindsym $mod+plus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $mod+plus exec --no-startup-id $vol_up
+bindsym $mod+minus exec --no-startup-id $vol_down
 
-bindsym --whole-window --border $mod+button4 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym --whole-window --border $mod+button5 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym --whole-window --border $mod+button4 exec --no-startup-id $vol_up
+bindsym --whole-window --border $mod+button5 exec --no-startup-id $vol_down
 
 # Software
-bindsym $mod+b exec chromium
+bindsym $mod+b exec $browser
 bindsym $mod+d exec $launcher
-bindsym $mod+i exec dolphin
-bindsym $mod+k exec kate
-bindsym $mod+o exec blueberry
-bindsym $mod+p exec pavucontrol-qt
-bindsym $mod+y exec discord
+bindsym $mod+i exec $file_manager
+bindsym $mod+k exec $text_editor
+bindsym $mod+o exec $bluetooth_gui
+bindsym $mod+p exec $audio_gui
+bindsym $mod+y exec $im
 
 # Screenshots
 bindsym Print exec grimshot save area
