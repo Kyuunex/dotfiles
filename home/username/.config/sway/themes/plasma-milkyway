@@ -1,3 +1,5 @@
+### Requires package plasma-workspace-wallpapers
+
 ### Appearance
 
 # Font
@@ -13,6 +15,6 @@ client.placeholder      #3465A4 #3465A4 #000000 #3465A4   #3465A4
 client.background       #2D2A2E
 
 # Wallpaper
-output * bg "/usr/share/wallpapers/MilkyWay/contents/images/1080x1920.png" fill
+output * bg "/usr/share/wallpapers/MilkyWay/contents/images/5120x2880.png" fill
 
 
