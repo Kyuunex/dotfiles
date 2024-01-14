@@ -1,9 +1,9 @@
 #!/bin/sh
-cp -avr ./home/username/.config ~/
-cp -avr ./home/username/.local ~/
-cp -avr ./home/username/.bash_profile ~/
-cp -avr ./home/username/.bashrc ~/
-cp -avr ./home/username/.profile ~/
+cp -avr ./.config ~/
+cp -avr ./.local ~/
+cp -avr ./.bash_profile ~/
+cp -avr ./.bashrc ~/
+cp -avr ./.profile ~/
 
 curl https://kyuunex.s-ul.eu/static/TLr1JPJY.png --create-dirs -o "$HOME/Pictures/wallpapers/large_ev414a.png"
 
