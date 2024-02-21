@@ -30,19 +30,26 @@
 
 # Variables
 set $mod Mod4
-set $launcher "rofi -modi window,drun,ssh,combi,run -show drun -theme nord -combi-modi window,drun,ssh -show-icons -font 'Noto Sans 16'"
+set $launcher i3-dmenu-desktop
+set $menu dmenu_run
+
+# set $launcher "rofi -modi window,drun,ssh,combi,run -show drun -theme nord -combi-modi window,drun,ssh -show-icons -font 'Noto Sans 16'"
 # set $menu "rofi -show run -theme nord -show-icons -font 'Noto Sans 16'"
 # set $menu "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#E04265' -sf '#000000' -fn 'Noto Sans-11' -p 'dmenu prompt &gt;'"
 # set $menu "dmenu_run -nf '#CDD6F4' -nb '#1E1E2E' -sb '#89DCEB' -sf '#1E1E2E' -fn 'Noto Sans-11' -p 'dmenu prompt &gt;'"
-set $menu "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#556988' -sf '#000000' -fn 'Noto Sans-11' -p 'dmenu prompt &gt;'"
+# set $menu "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#556988' -sf '#000000' -fn 'Noto Sans-11' -p 'dmenu prompt &gt;'"
 
-set $term konsole
+set $term i3-sensible-terminal
 set $browser chromium
 set $file_manager dolphin
-set $text_editor kate
+set $text_editor i3-sensible-editor
 set $bluetooth_gui blueberry
 set $audio_gui pavucontrol-qt
 set $im discord
+
+# Xrandr
+bindsym $mod+Shift+m exec xrandr --output HDMI-A-0 --off
+bindsym $mod+m exec xrandr --output HDMI-A-0 --auto --left-of DisplayPort-0
 
 # Appearance
 include themes/plasma-milkyway

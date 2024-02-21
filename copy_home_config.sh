@@ -4,6 +4,7 @@ cp -avr ./.local ~/
 cp -avr ./.bash_profile ~/
 cp -avr ./.bashrc ~/
 cp -avr ./.profile ~/
+cp -avr ./.xinitrc ~/
 
 curl https://kyuunex.s-ul.eu/static/TLr1JPJY.png --create-dirs -o "$HOME/Pictures/wallpapers/large_ev414a.png"
 

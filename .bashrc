@@ -5,10 +5,16 @@
 # If not running interactively, don't do anything
 # [[ $- != *i* ]] && return
 
+export TERMINAL="konsole"
+export VISUAL="kate"
 export EDITOR="nano"
 export SUDO_EDITOR="nano"
 export XDG_SCREENSHOTS_DIR="$HOME/Pictures/Screenshots/"
 
+export QT_QPA_PLATFORMTHEME=qt5ct
+export XCURSOR_SIZE=24
+
+export SDL_VIDEODRIVER="wayland,x11"
 export SDL_AUDIODRIVER=pipewire
 
 source /etc/profile
@@ -33,4 +39,8 @@ fi
 
 export PATH="/usr/lib/ccache/bin/:$PATH"
 
+export USE_CCACHE=1
+
 export PFXS="$HOME/.local/share/wineprefixes"
+
+export PROXY="socks5://127.0.0.1:25344/"

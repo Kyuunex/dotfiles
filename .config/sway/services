@@ -12,7 +12,7 @@ exec --no-startup-id kdeconnect-indicator
 # exec --no-startup-id blueberry-tray
 
 # Notifications
-exec --no-startup-id mako
+# exec --no-startup-id mako
 
 # polkit
 # exec --no-startup-id /usr/bin/polkit-dumb-agent
@@ -24,4 +24,4 @@ exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 # exec --no-startup-id /usr/lib/pam_kwallet_init
 
 # XDG
-exec --no-startup-id /usr/lib/xdg-desktop-portal -r
+# exec --no-startup-id /usr/lib/xdg-desktop-portal -r

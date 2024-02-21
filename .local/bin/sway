@@ -1,14 +1,14 @@
 #!/bin/sh
 
-export QT_QPA_PLATFORMTHEME=qt5ct
-export GTK_THEME=Adwaita:dark
+# export QT_QPA_PLATFORMTHEME=qt5ct
+# export GTK_THEME=Arc-Dark-solid
 
-export XDG_CURRENT_DESKTOP=sway
-export XDG_SESSION_TYPE=wayland
+# export XDG_CURRENT_DESKTOP=sway
+# export XDG_SESSION_TYPE=wayland
 
-export SDL_VIDEODRIVER=wayland
+# export SDL_VIDEODRIVER=wayland
 # export QT_QPA_PLATFORM=wayland
 # export CLUTTER_BACKEND=wayland
-export MOZ_ENABLE_WAYLAND=1
+# export MOZ_ENABLE_WAYLAND=1
 
 /usr/bin/sway

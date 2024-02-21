@@ -1,1 +1,1 @@
-exec --no-startup-id discord --start-minimized
+# exec --no-startup-id discord --start-minimized
