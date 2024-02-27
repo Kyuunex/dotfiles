@@ -23,16 +23,18 @@ order += "ethernet _first_"
 order += "cpu_usage"
 order += "cpu_temperature 0"
 order += "memory"
+order += "volume master"
+order += "read_file weather"
 order += "tztime local"
 
 wireless _first_ {
-        format_up = "W: (%quality at %essid) %ip"
-        format_down = "W: down"
+        format_up = "w: (%quality at %essid) %ip"
+        format_down = "w: down"
 }
 
 ethernet _first_ {
-        format_up = "E: %ip (%speed)"
-        format_down = "E: down"
+        format_up = "e: %ip (%speed)"
+        format_down = "e: down"
 }
 
 battery all {
@@ -48,20 +50,31 @@ load {
 }
 
 cpu_usage {
-        format = "CPU: %usage"
+        format = "cpu: %usage"
 }
 
 cpu_temperature 0 {
-        format = "T: %degrees °C"
+        format = "tdie: %degrees °C"
         path = "/sys/class/hwmon/hwmon2/temp1_input"
 }
 
 memory {
-        format = "RAM: %used"
+        format = "mem: %used"
         threshold_degraded = "1G"
         format_degraded = "MEMORY < %available"
 }
 
+volume master {
+        format = "vol: %volume"
+        format_muted = "vol: (%volume)"
+}
+
 tztime local {
         format = "%a, %Y/%b/%d, %H:%M:%S"
+}
+
+read_file weather {
+        format = "%content"
+        format_bad = "%errno: %error"
+        path = "/tmp/weather_last.txt"
 }
