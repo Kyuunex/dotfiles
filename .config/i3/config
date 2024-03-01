@@ -11,9 +11,9 @@
 
 # Packages required on Arch:
 #
-# xorg-server xorg-xinit xorg-xrandr i3-wm i3status rofi dunst xss-lock picom
+# xorg-server xorg-xinit xorg-xrandr i3-wm i3status rofi dunst xss-lock
 # konsole kate kdeconnect polkit-kde-agent kde-cli-tools dolphin kdialog dex
-# noto-fonts feh pavucontrol-qt brightnessctl
+# plasma-integration noto-fonts feh pavucontrol-qt brightnessctl
 # flameshot gnome-keyring seahorse network-manager-applet blueberry dmenu
 #
 # From AUR:
@@ -30,14 +30,15 @@
 
 # Variables
 set $mod Mod4
-set $launcher i3-dmenu-desktop
-set $menu dmenu_run
 
+set $launcher i3-dmenu-desktop --dmenu="dmenu -i -nf '#BBBBBB' -nb '#222222' -sb '#c4a000' -sf '#000000' -fn 'Noto Sans-11' -p 'dmenu prompt > '"
 # set $launcher "rofi -modi window,drun,ssh,combi,run -show drun -theme nord -combi-modi window,drun,ssh -show-icons -font 'Noto Sans 16'"
+
 # set $menu "rofi -show run -theme nord -show-icons -font 'Noto Sans 16'"
-# set $menu "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#E04265' -sf '#000000' -fn 'Noto Sans-11' -p 'dmenu prompt &gt;'"
-# set $menu "dmenu_run -nf '#CDD6F4' -nb '#1E1E2E' -sb '#89DCEB' -sf '#1E1E2E' -fn 'Noto Sans-11' -p 'dmenu prompt &gt;'"
-# set $menu "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#556988' -sf '#000000' -fn 'Noto Sans-11' -p 'dmenu prompt &gt;'"
+# set $menu "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#E04265' -sf '#000000' -fn 'Noto Sans-11' -p 'dmenu prompt > '"
+# set $menu "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#556988' -sf '#000000' -fn 'Noto Sans-11' -p 'dmenu prompt > '"
+set $menu "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#c4a000' -sf '#000000' -fn 'Noto Sans-11' -p 'dmenu prompt > '"
+# set $menu dmenu_run -fn 'Noto Sans-11'
 
 set $term i3-sensible-terminal
 set $browser chromium
