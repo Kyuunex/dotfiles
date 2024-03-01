@@ -1,0 +1,9 @@
+[KDE]
+ShowDeleteCommand=false
+
+[PreviewSettings]
+MaximumRemoteSize=0
+
+[General]
+TerminalApplication=st
+
