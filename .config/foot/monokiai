@@ -1,0 +1,26 @@
+[main]
+font=Noto Sans Mono:size=10
+
+[cursor]
+color=2d2a2e ffd866
+
+[colors]
+background=2d2a2e
+foreground=ffd866
+regular0=986a44  # black
+regular1=d74669  # red
+regular2=33d17a  # green
+regular3=c4a000  # yellow
+regular4=3465a4  # blue
+regular5=c061cb  # magenta
+regular6=06989a  # cyan
+regular7=d3d7cf  # white
+
+bright0=cdab8f   # bright black
+bright1=ff6188   # bright red
+bright2=8ff0a4   # bright green
+bright3=fce94f   # bright yellow
+bright4=729fcf   # bright blue
+bright5=dc8add   # bright magenta
+bright6=34e2e2   # bright cyan
+bright7=eeeeec   # bright white
