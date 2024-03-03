@@ -1,0 +1,124 @@
+#!/bin/bash
+# This script is meant to reset or clear out stuff the Plasma desktop sets.
+
+cd ~/
+
+# Resets the Breeze theme Plasma applies to GTK apps.
+rm -rf .config/gtk-3.0/assets
+rm -rf .config/gtk-4.0/assets
+rm .config/gtk-3.0/colors.css
+rm .config/gtk-3.0/gtk.css
+rm .config/gtk-3.0/settings.ini
+rm .config/gtk-3.0/window_decorations.css
+rm .config/gtk-4.0/colors.css
+rm .config/gtk-4.0/gtk.css
+rm .config/gtk-4.0/settings.ini
+rm .config/gtk-4.0/window_decorations.css
+rm .config/gtkrc
+rm .config/gtkrc-2.0
+rm .gtkrc-2.0
+
+# Configs
+rm -rf .config/kde*
+rm -rf .config/plasma*
+rm -rf .kde
+rm -rf .local/share/RecentDocuments/*
+rm -rf .local/share/ark
+rm -rf .local/share/baloo
+rm -rf .local/share/discover
+rm -rf .local/share/kactivitymanagerd
+rm -rf .local/share/kded5
+rm -rf .local/share/kded6
+rm -rf .local/share/keditfiletype
+rm -rf .local/share/knewstuff3
+rm -rf .local/share/kscreen
+rm -rf .local/share/kwin
+# rm -rf .local/share/mime
+rm -rf .local/share/okular
+rm -rf .local/share/plasma
+rm -rf .local/share/plasmashell
+rm -rf .local/share/systemsettings
+rm .config/PlasmaUserFeedback
+rm .config/baloofileinformationrc
+rm .config/baloofilerc
+rm .config/bluedevilglobalrc
+rm .config/discoverrc
+rm .config/dolphinrc
+rm .config/gwenviewrc
+rm .config/kactivitymanagerd-statsrc
+rm .config/kactivitymanagerdrc
+rm .config/katemetainfos
+rm .config/katerc
+rm .config/kateschemarc
+rm .config/katevirc
+rm .config/kcminputrc
+rm .config/kconf_updaterc
+rm .config/kdeglobals
+rm .config/kdialogrc
+rm .config/kfindrc
+rm .config/kfontinstuirc
+rm .config/kglobalshortcutsrc
+rm .config/khotkeysrc
+rm .config/kiorc
+rm .config/kmixrc
+rm .config/kscreenlockerrc
+rm .config/kservicemenurc
+rm .config/ksmserverrc
+rm .config/ktimezonedrc
+rm .config/kwalletmanager5rc
+rm .config/kwalletrc
+rm .config/kwinoutputconfig.json
+rm .config/kwinrc
+rm .config/kwinrulesrc
+rm .config/mimeapps.list
+rm .config/powerdevilrc
+rm .config/spectaclerc
+rm .config/systemsettingsrc
+rm .config/xdg-desktop-portal-kderc
+rm .local/share/krunnerstaterc
+
+# Caches
+rm -rf .cache/KDE
+rm -rf .cache/bookmarksrunner/KRunner*
+rm -rf .cache/discover
+rm -rf .cache/dolphin
+rm -rf .cache/drkonqi
+rm -rf .cache/elisa
+rm -rf .cache/epiphany
+rm -rf .cache/kcmshell5
+rm -rf .cache/kcrash-metadata
+rm -rf .cache/kdeconnect.app
+rm -rf .cache/kio_http
+rm -rf .cache/kioexec
+rm -rf .cache/knetwalk
+rm -rf .cache/kpackage-knshandler
+rm -rf .cache/krita
+rm -rf .cache/krunner
+rm -rf .cache/kscreen_osd_service
+rm -rf .cache/kscreenlocker_greet
+rm -rf .cache/ksmserver-logout-greeter
+rm -rf .cache/ksplash
+rm -rf .cache/ksycoca5*
+rm -rf .cache/kweather
+rm -rf .cache/kwin
+rm -rf .cache/kwin_rules_dialog
+rm -rf .cache/lookandfeelexplorer
+rm -rf .cache/org.kde.ki18n
+rm -rf .cache/org.kde.unitconversion
+rm -rf .cache/plasma.emojier
+rm -rf .cache/plasma_engine_potd
+rm -rf .cache/plasmashell*
+rm -rf .cache/polkit-kde-authentication-agent-1
+rm -rf .cache/qmlplugindump
+rm -rf .cache/qtshadercache*
+rm -rf .cache/spectacle
+rm -rf .cache/systemsettings
+rm -rf .cache/telepathy
+rm -rf .cache/xdg-desktop-portal-kde
+rm .cache/icon-cache.kcache
+rm .cache/krunnerbookmarkrunnerfirefoxdbfile.sqlite
+rm .cache/ksvg-elements
+rm .cache/org.kde.dirmodel-qml.kcache
+rm .cache/plasma_theme_default.kcache
+
+echo "All done"
