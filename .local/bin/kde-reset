@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script is meant to reset or clear out stuff the Plasma desktop sets.
+# https://github.com/Kyuunex/kde-reset
 
 cd ~/
 
@@ -120,5 +120,17 @@ rm .cache/krunnerbookmarkrunnerfirefoxdbfile.sqlite
 rm .cache/ksvg-elements
 rm .cache/org.kde.dirmodel-qml.kcache
 rm .cache/plasma_theme_default.kcache
+
+# ANSI color codes
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+if [ -n "$QT_QPA_PLATFORMTHEME" ]; then
+    printf "${RED}Warning: QT_QPA_PLATFORMTHEME environment variable is set. This will break themeing in KDE for Qt apps.${NC}\n"
+fi
+
+if [ -n "$GTK_THEME" ]; then
+    printf "${RED}Warning: GTK_THEME environment variable is set. This will break themeing in KDE for GTK apps.${NC}\n"
+fi
 
 echo "All done"
