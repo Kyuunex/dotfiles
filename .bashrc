@@ -10,12 +10,11 @@ export VISUAL="kate"
 export EDITOR="nano"
 export SUDO_EDITOR="nano"
 export XDG_SCREENSHOTS_DIR="$HOME/Pictures/Screenshots/"
+export PFXS="$HOME/.local/share/wineprefixes"
+export PROXY="socks5://127.0.0.1:25344/"
 
-export QT_QPA_PLATFORMTHEME=qt5ct
-export XCURSOR_SIZE=24
-
-export SDL_VIDEODRIVER="wayland,x11"
-export SDL_AUDIODRIVER=pipewire
+export PATH="/usr/lib/ccache/bin/:$PATH"
+export USE_CCACHE=1
 
 source /etc/profile
 
@@ -29,18 +28,15 @@ alias aria4c='aria2c --max-download-limit=4M'
 alias aria5c='aria2c --max-download-limit=5M'
 alias mkenv='python -m venv ./venv'
 alias srcenv='source ./venv/bin/activate'
-alias noexif='exiftool -all='
+alias exifrm='exiftool -all='
 alias swaytree='swaymsg -t get_tree'
+
 PS1="[\W]\$ "
 
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-export PATH="/usr/lib/ccache/bin/:$PATH"
-
-export USE_CCACHE=1
-
-export PFXS="$HOME/.local/share/wineprefixes"
-
-export PROXY="socks5://127.0.0.1:25344/"
+# if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+#     exec startx
+# fi
