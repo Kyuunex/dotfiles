@@ -1,0 +1,54 @@
+/* Based on https://github.com/alxndr13/wofi-nord-theme */
+
+* {
+    font-family: "Noto Sans";
+}
+
+window {
+    opacity: 0.95;
+    background-color: #F0C869;
+}
+
+#input {
+    margin: 5px;
+    border-radius: 0px;
+    border: none;
+    background-color: #362e28;
+    color: white;
+}
+
+#inner-box {
+    background-color: #3d332d;
+}
+
+#outer-box {
+    margin: 2px;
+    padding: 10px;
+    background-color: #3d332d;
+}
+
+#scroll {
+    margin: 5px;
+}
+
+#text {
+    padding: 4px;
+    color: white;
+}
+
+#entry {
+    background-color: #423831;
+}
+
+#entry:nth-child(even){
+    background-color: #4d4038;
+}
+
+#entry:selected {
+    background-color: #F0C869;
+}
+
+#text:selected {
+    background: transparent;
+    color: #000000;
+}
