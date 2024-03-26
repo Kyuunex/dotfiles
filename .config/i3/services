@@ -4,22 +4,8 @@
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id kdeconnect-indicator
 
-# Bluetooth
-# exec --no-startup-id blueman-applet
-
-# Notifications
-# exec --no-startup-id dunst
-
 # polkit
-# exec --no-startup-id /usr/bin/polkit-dumb-agent
-exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
-
-# Keyrings
-# exec --no-startup-id eval $(gnome-keyring-daemon --start)
-# exec --no-startup-id export SSH_AUTH_SOCK
-# exec --no-startup-id /usr/lib/pam_kwallet_init
+exec --no-startup-id /usr/bin/lxpolkit
 
 # Other
 exec --no-startup-id snixembed
-# exec --no-startup-id flameshot
-# exec --no-startup-id picom --no-vsync
