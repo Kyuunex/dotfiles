@@ -31,13 +31,13 @@
 # Variables
 set $mod Mod4
 
-set $launcher i3-dmenu-desktop --dmenu="dmenu -i -nf '#BBBBBB' -nb '#222222' -sb '#c4a000' -sf '#000000' -fn 'Noto Sans-11' -p 'dmenu prompt > '"
+set $launcher i3-dmenu-desktop --dmenu="dmenu -i -nf '#BBBBBB' -nb '#222222' -sb '#c4a000' -sf '#000000' -fn 'Noto Sans-11' -p 'run > '"
 # set $launcher "rofi -modi window,drun,ssh,combi,run -show drun -theme nord -combi-modi window,drun,ssh -show-icons -font 'Noto Sans 16'"
 
 # set $menu "rofi -show run -theme nord -show-icons -font 'Noto Sans 16'"
-# set $menu "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#E04265' -sf '#000000' -fn 'Noto Sans-11' -p 'dmenu prompt > '"
-# set $menu "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#556988' -sf '#000000' -fn 'Noto Sans-11' -p 'dmenu prompt > '"
-set $menu "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#c4a000' -sf '#000000' -fn 'Noto Sans-11' -p 'dmenu prompt > '"
+# set $menu "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#E04265' -sf '#000000' -fn 'Noto Sans-11' -p 'run > '"
+# set $menu "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#556988' -sf '#000000' -fn 'Noto Sans-11' -p 'run > '"
+set $menu "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#c4a000' -sf '#000000' -fn 'Noto Sans-11' -p 'run > '"
 # set $menu dmenu_run -fn 'Noto Sans-11'
 
 set $term i3-sensible-terminal
@@ -53,7 +53,7 @@ bindsym $mod+Shift+m exec xrandr --output HDMI-A-0 --off
 bindsym $mod+m exec xrandr --output HDMI-A-0 --auto --left-of DisplayPort-0
 
 # Appearance
-include themes/plasma-milkyway
+include themes/plasma-next
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
