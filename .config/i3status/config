@@ -15,7 +15,7 @@ general {
     color_bad = "#D74669"
 }
 
-order += "ipv6"
+# order += "ipv6"
 order += "wireless _first_"
 order += "ethernet _first_"
 # order += "battery all"
@@ -28,13 +28,13 @@ order += "read_file weather"
 order += "tztime local"
 
 wireless _first_ {
-        format_up = "w: (%quality at %essid) %ip"
-        format_down = "w: down"
+        format_up = "w: %quality at %essid"
+        format_down = ""
 }
 
 ethernet _first_ {
-        format_up = "e: %ip (%speed)"
-        format_down = "e: down"
+        format_up = "e: %speed"
+        format_down = ""
 }
 
 battery all {
