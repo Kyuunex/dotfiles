@@ -4,9 +4,9 @@
     "height": 30, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["custom/menu-button", "sway/workspaces", "sway/mode"],
+    "modules-left": ["sway/workspaces", "sway/mode"],
     // "modules-center": ["sway/window"],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "sway/language", "tray", "clock"],
+    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "custom/weather", "sway/language", "tray", "clock"],
     // Modules configuration
     "sway/workspaces": {
     //     "disable-scroll": true,
@@ -177,5 +177,10 @@
         "format": " ",
         "on-click": "exec swaymsg -- output DP-1 adaptive_sync on",
         "on-click-right": "exec swaymsg -- output DP-1 adaptive_sync off"
+    },
+    "custom/weather": {
+        "exec": "curl -l https://wttr.in/?format=2",
+        "interval": 1800,
+        "format": "{}",
     }
 }
